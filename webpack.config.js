@@ -1,6 +1,7 @@
 // webpack 수동 작성
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const clientConfig = {
   entry: './build/src/index.tsx',
@@ -26,6 +27,13 @@ const clientConfig = {
   resolve: {
     extensions: ['.tsx','.ts','.js'],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './build/index.html',
+      filename: 'index.html',
+      inject: 'body',
+    }),
+  ],
   output: {
     filename: 'client.bundle.js',
     path: path.resolve(__dirname, 'dist'),
