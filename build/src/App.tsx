@@ -1,12 +1,23 @@
-import React from 'react';
-import "./test.css"
+import React, { useEffect, useState } from 'react';
+import { getHello } from './api';
 
-const App = () => {
-    return (
-        <div>
-            <h1>Hello React</h1>
-        </div>
-    );
+function App() {
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const helloMessage = await getHello();
+      setMessage(helloMessage);
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1>{message}</h1>
+    </div>
+  );
 }
 
 export default App;
