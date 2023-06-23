@@ -4,7 +4,7 @@ import { join } from 'path';
 import { AppModule } from './app.module';
 async function bootstrap(): Promise<NestExpressApplication> {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.useStaticAssets(join(__dirname, '..', 'client', 'build'));
+  app.useStaticAssets(join(__dirname, '../', 'client', '/dist'));
   return app;
 }
 async function start() {
