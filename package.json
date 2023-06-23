@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node ./dist/server.bundle.js",
+    "start": "node ./dist/server.bundle.js",
     "build": "npx webpack"
   },
   "keywords": [],
@@ -31,6 +31,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@types/jest": "^29.5.2",
     "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
