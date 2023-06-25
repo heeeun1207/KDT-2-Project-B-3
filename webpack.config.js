@@ -20,32 +20,11 @@ const clientConfig = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      }
-    ],
-  },
-  resolve: {
-    extensions: ['.tsx','.ts','.js'],
-  },
-  output: {
-    filename: 'client.bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-};
-
-const serverConfig = {
-  entry: './build/src/server/index.ts',
-  mode: 'production',
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: 'ts-loader',
       },
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx','.ts','.js'],
   },
   optimization: {
     minimizer: [
@@ -62,8 +41,29 @@ const serverConfig = {
     ],
   },
   output: {
-    filename: 'server.bundle.js',
+    filename: 'client.bundle.js',
     path: path.resolve(__dirname, './dist'),
+  },
+
+};
+const serverConfig = {
+  entry: './build/src/server/index.ts',
+  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: 'server.bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   target: 'node',
   optimization: {
@@ -81,5 +81,4 @@ const serverConfig = {
     ],
   },
 };
-
 module.exports = [clientConfig, serverConfig];
