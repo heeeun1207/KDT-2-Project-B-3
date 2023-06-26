@@ -4,7 +4,7 @@ import { join } from 'path';
 import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.useStaticAssets(join(__dirname, '..', 'client', 'build'));
+  app.useStaticAssets(join(__dirname, '..', 'client', 'build', 'src'));
   app.enableCors(); // 필요한 경우 CORS 설정
   await app.listen(3000);
 }

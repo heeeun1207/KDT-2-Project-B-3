@@ -1,11 +1,11 @@
 import React from 'react';
-import "./test.css"
+import "./test.css";
 
-const App = () => {
+const App = ():JSX.Element => {
     return (
-        <div>
+        <>
             <h1>Hello React</h1>
-        </div>
+        </>
     );
 }
 
