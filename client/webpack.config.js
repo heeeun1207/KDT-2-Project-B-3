@@ -32,4 +32,54 @@ const clientConfig = {
   ],
 };
 
-module.exports = clientConfig;
+const serverConfig = {
+  entry: './build/src/server/index.ts',
+  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true, // 콘솔 로그 제거
+          },
+          output: {
+            comments: false, // 주석 제거
+          },
+        },
+      }),
+    ],
+  },
+  output: {
+    filename: 'server.bundle.js',
+    path: path.resolve(__dirname, './dist'),
+  },
+  target: 'node',
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true, // 콘솔 로그 제거
+          },
+          output: {
+            comments: false, // 주석 제거
+          },
+        },
+      }),
+    ],
+  },
+};
+
+module.exports = [clientConfig, serverConfig];
