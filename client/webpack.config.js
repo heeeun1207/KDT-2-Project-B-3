@@ -1,6 +1,6 @@
 // webpack 수동 작성
-const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
+import { resolve as _resolve } from 'path';
+import TerserPlugin from 'terser-webpack-plugin';
 
 const clientConfig = {
   entry: './build/src/index.tsx',
@@ -28,7 +28,7 @@ const clientConfig = {
   },
   output: {
     filename: 'client.bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: _resolve(__dirname, 'dist'),
   },
 };
 
@@ -63,7 +63,7 @@ const serverConfig = {
   },
   output: {
     filename: 'server.bundle.js',
-    path: path.resolve(__dirname, './dist'),
+    path: _resolve(__dirname, './dist'),
   },
   target: 'node',
   optimization: {
@@ -82,4 +82,4 @@ const serverConfig = {
   },
 };
 
-module.exports = [clientConfig, serverConfig];
+export default [clientConfig, serverConfig];
