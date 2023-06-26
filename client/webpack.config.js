@@ -1,6 +1,6 @@
 // webpack 수동 작성
-import * as path from 'path';
-import TerserPlugin from "terser-webpack-plugin";
+const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const clientConfig = {
   entry: './build/src/index.tsx',
