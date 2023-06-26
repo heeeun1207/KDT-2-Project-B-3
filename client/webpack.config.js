@@ -1,6 +1,6 @@
-// webpack 수동 작성
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const clientConfig = {
   entry: './build/src/index.tsx',
@@ -11,11 +11,6 @@ const clientConfig = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: 'ts-loader',
-      },
-      {
-        test: /\.(tsx?|js)$/,
-        exclude: /node_modules/,
-        use: 'babel-loader',
       },
       {
         test: /\.css$/,
@@ -30,6 +25,11 @@ const clientConfig = {
     filename: 'client.bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'build', 'src', 'index.html'),
+    }),
+  ],
 };
 
 const serverConfig = {

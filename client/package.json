@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node ./dist/server.bundle.js",
+    "start": "node ./dist/server.bundle.js",
     "build": "npx webpack"
   },
   "keywords": [],
@@ -22,6 +22,7 @@
     "@types/react-dom": "^18.2.6",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
     "style-loader": "^3.3.3",
     "terser-webpack-plugin": "^5.3.9",
     "ts-loader": "^9.4.3",
