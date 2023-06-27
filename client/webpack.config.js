@@ -23,7 +23,7 @@ const clientConfig = {
   },
   output: {
     filename: 'client.bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -63,7 +63,7 @@ const serverConfig = {
   },
   output: {
     filename: 'server.bundle.js',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './public'),
   },
   target: 'node',
   optimization: {
