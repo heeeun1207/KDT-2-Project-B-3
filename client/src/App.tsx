@@ -15,6 +15,13 @@ const App = ():JSX.Element => {
         "/home": "홈",
     };
     React.useEffect(()=> {
+        // switch (location.pathname) {
+        //     case "/" :
+        //         setPageTitle("테스트");
+        //     break;
+        //     case "/home" :
+        //         setPageTitle("홈")
+        // }
         setPageTitle(titleMapping[location.pathname] || "");
     }, [location.pathname])
     return (

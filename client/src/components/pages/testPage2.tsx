@@ -1,7 +1,7 @@
 import React from "react";
 const testPage = ():JSX.Element=> {
-  return <div>
+  return (<div>
     <p>라우터 테스트</p>
-  </div>
+  </div>)
 };
 export default testPage
