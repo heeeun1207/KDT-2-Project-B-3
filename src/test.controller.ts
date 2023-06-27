@@ -6,7 +6,7 @@ export class TestController {
   
   @Get('*')
   kimochi(@Res() res) {
-    res.send(this.TestService.getHello())
+    res.sendFile(this.TestService.getHello())
   }
 
 }
