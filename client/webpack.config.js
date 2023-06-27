@@ -3,7 +3,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const clientConfig = {
-  entry: './build/src/index.tsx',
+  entry: './src/index.tsx',
   mode: 'production',
   module: {
     rules: [
@@ -27,13 +27,13 @@ const clientConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'build', 'src', 'index.html'),
+      template: path.resolve(__dirname, 'src', 'index.html'),
     }),
   ],
 };
 
 const serverConfig = {
-  entry: './build/src/server/index.ts',
+  entry: './src/test/index.ts',
   mode: 'production',
   module: {
     rules: [
