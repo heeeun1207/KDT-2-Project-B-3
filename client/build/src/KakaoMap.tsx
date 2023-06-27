@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
-import { Map, MapMarker, MapTypeId } from 'react-kakao-maps-sdk';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
+
+interface Position {
+  lat: number;
+  lng: number;
+}
 
 const KakaoMap = function () {
-  const [position, setPosition] = useState<null | { lat: number; lng: number }>(
-    null,
-  );
+  const [position, setPosition] = useState<Position | null>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleMapClick = (_t: any, mouseEvent: any) => {
     setPosition({
       lat: mouseEvent.latLng.getLat(),
       lng: mouseEvent.latLng.getLng(),
     });
+  };
+
+  const handleMarkerMouseOver = () => {
+    setIsOpen(true);
+  };
+
+  const handleMarkerMouseOut = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -28,6 +40,19 @@ const KakaoMap = function () {
         onClick={handleMapClick}
       >
         {position && <MapMarker position={position} />}
+        <MapMarker
+          position={{
+            lat: 36.3489005,
+            lng: 127.37733,
+          }}
+          clickable={true}
+          onMouseOver={handleMarkerMouseOver}
+          onMouseOut={handleMarkerMouseOut}
+        >
+          {isOpen && (
+            <div style={{ padding: '5px', color: '#000' }}>Hello World!</div>
+          )}
+        </MapMarker>
       </Map>
       {position && (
         <p>
