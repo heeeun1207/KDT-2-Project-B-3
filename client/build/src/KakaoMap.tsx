@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { Map, MapMarker, MapTypeId } from 'react-kakao-maps-sdk';
 
 const KakaoMap = function () {
   return (
@@ -10,6 +10,8 @@ const KakaoMap = function () {
       <MapMarker position={{ lat: 33.55635, lng: 126.795841 }}>
         <div style={{ color: '#000' }}>맵위에 마커와 인포윈도우 올리기!</div>
       </MapMarker>
+      {/*지도에 교통정보 표시하기*/}
+      <MapTypeId type={kakao.maps.MapTypeId.TRAFFIC} />
     </Map>
   );
 };
