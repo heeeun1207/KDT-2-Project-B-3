@@ -1,12 +1,14 @@
-import React from 'react';
-import "./test.css";
 
-const App = ():JSX.Element => {
-    return (
-        <>
-            <h1>Hello React</h1>
-        </>
-    );
-}
+import React from 'react';
+import './test.css';
+import KakaoMap from './KakaoMap';
+
+const App = (): JSX.Element => {
+  return (
+    <>
+      <KakaoMap />
+    </>
+  );
+};
 
 export default App;
