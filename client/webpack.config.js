@@ -19,7 +19,7 @@ const clientConfig = {
     ],
   },
   resolve: {
-    extensions: ['.tsx','.ts','.js'],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
     filename: 'client.bundle.js',
