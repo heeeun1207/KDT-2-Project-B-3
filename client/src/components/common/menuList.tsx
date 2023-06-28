@@ -1,9 +1,29 @@
 import React from "react";
+import Info from './myInfo';
+import Book from './myBookMark';
 
 const button = ():JSX.Element =>{
   return (
     <div>
-      This is me.
+
+    <div>
+      Jin님, 환영합니다. 
+      <div>알림이미지 들어갈 부분</div>
+    </div>
+
+    <Info />
+    <Book />
+
+    
+    <div>
+      설정이미지 들어갈 부분
+    </div>
+
+    <div>
+    <button>고객센터</button>
+    <button>로그아웃</button>
+    </div>
+
     </div>
   )
 };
