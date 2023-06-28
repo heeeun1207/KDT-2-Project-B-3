@@ -8,13 +8,13 @@ const testPage = (): JSX.Element => {
   return (
     <div>
       <Search />
-      <div style={{ marginTop: '60px' }}>
+      <div>
         <Restroombutton />
       </div>
-      <div style={{ marginTop: '20px' }}>
+      <div>
         <Gas_stationbutton />
       </div>
-      <div style={{ marginTop: '20px' }}>
+      <div>
         <Local_convenience />
       </div>
     </div>

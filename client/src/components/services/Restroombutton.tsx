@@ -21,6 +21,7 @@ const Restroombutton = (): JSX.Element => {
           border: 'none',
           backgroundColor: '#ffffff',
           boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
+          marginTop: '60px',
         }}
       >
         <img
