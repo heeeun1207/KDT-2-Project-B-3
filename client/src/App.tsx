@@ -3,7 +3,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Header from './components/layout/header';
 import TestPage from './components/pages/testPage';
 import TestPage2 from './components/pages/testPage2';
-import MenuPage from './components/pages/hamburgerMenuPage';
 import "./test.css";
 const App = ():JSX.Element => {
     const location = useLocation();

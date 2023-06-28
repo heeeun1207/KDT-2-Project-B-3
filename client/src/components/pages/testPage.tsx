@@ -1,9 +1,12 @@
 import React from "react";
 import Button from "../common/button";
+import SideButton from "../common/hamburgerButton";
+import SideMenuButton from '../common/hamburgerButton';
 const testPage = ():JSX.Element=> {
   return <div>
-    <p>대머리</p>
-    <Button/>
+
+    <SideMenuButton />
+
   </div>
 };
 export default testPage

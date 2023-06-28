@@ -2,7 +2,7 @@ import React from "react";
 import Info from './myInfo';
 import Book from './myBookMark';
 
-const button = ():JSX.Element =>{
+const menuList = ():JSX.Element =>{
   return (
     <div>
 
@@ -27,4 +27,4 @@ const button = ():JSX.Element =>{
     </div>
   )
 };
-export default button;
+export default menuList;
