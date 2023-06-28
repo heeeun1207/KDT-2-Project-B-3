@@ -5,10 +5,15 @@ import Local_convenience from '../services/Local_convenience';
 import Search from '../common/Search';
 import Listdiv from '../services/Listdiv';
 
-const testPage = (): JSX.Element => {
+const TestPage = (): JSX.Element => {
+  const handleSearch = (searchTerm: string) => {
+    // Handle the search logic here
+    console.log('Search term:', searchTerm);
+  };
+
   return (
     <div>
-      <Search />
+      <Search onSearch={handleSearch} />
       <div>
         <Restroombutton />
       </div>
@@ -25,4 +30,4 @@ const testPage = (): JSX.Element => {
   );
 };
 
-export default testPage;
+export default TestPage;
