@@ -1,7 +1,10 @@
-import React from "react";
-const testPage = ():JSX.Element=> {
-  return (<div>
-    <p>라우터 테스트</p>
-  </div>)
+import React from 'react';
+import Search from '../common/Search';
+const testPage = (): JSX.Element => {
+  return (
+    <div>
+      <Search />
+    </div>
+  );
 };
-export default testPage
+export default testPage;

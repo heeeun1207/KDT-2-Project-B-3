@@ -2,7 +2,7 @@ import React from 'react';
 import Restroombutton from '../services/Restroombutton';
 import Gas_stationbutton from '../services/Gas_stationbutton';
 import Local_convenience from '../services/Local_convenience';
-import Search from '../services/Search';
+import Search from '../common/Search';
 import Listdiv from '../services/Listdiv';
 
 const testPage = (): JSX.Element => {
