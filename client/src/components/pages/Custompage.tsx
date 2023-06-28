@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Search from '../common/Search';
 import ButtonList from '../services/ButtonList';
 
-const TestPage = (): JSX.Element => {
+const Custompage = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const handleSearch = (searchValue: string) => {
@@ -17,4 +17,4 @@ const TestPage = (): JSX.Element => {
   );
 };
 
-export default TestPage;
+export default Custompage;

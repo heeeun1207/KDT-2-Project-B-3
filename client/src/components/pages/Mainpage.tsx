@@ -5,7 +5,7 @@ import Local_convenience from '../services/Local_convenience';
 import Search from '../common/Search';
 import Listdiv from '../services/Listdiv';
 
-const TestPage = (): JSX.Element => {
+const Mainpage = (): JSX.Element => {
   const handleSearch = (searchTerm: string) => {
     // Handle the search logic here
     console.log('Search term:', searchTerm);
@@ -30,4 +30,4 @@ const TestPage = (): JSX.Element => {
   );
 };
 
-export default TestPage;
+export default Mainpage;
