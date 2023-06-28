@@ -26,9 +26,11 @@
     "@nestjs/platform-express": "^10.0.0",
     "antd": "^5.6.3",
     "react-device-detect": "^2.2.3",
+    "react-router-dom": "^6.14.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "web-vitals": "^3.3.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

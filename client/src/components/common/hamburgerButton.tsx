@@ -1,22 +1,7 @@
 import React, { useState } from 'react';
 import MenuList from './menuList'; // MenuList 컴포넌트의 경로에 맞게 수정해주세요.
 
-/*
-const Container = styled.div`
-  position: relative;
-`;
-
-const CheckLabel = styled.div`
-  position: relative;
-  display: block;
-  width: 60px;
-  height: 40px;
-  cursor: pointer;
-  z-index: 2;
-`;
-*/
-
-const SideButton: React.FC = () => {
+const SideMenuButton: React.FC = () => {
   const [checked, setChecked] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -44,4 +29,4 @@ const SideButton: React.FC = () => {
   );
 };
 
-export default SideButton;
+export default SideMenuButton;

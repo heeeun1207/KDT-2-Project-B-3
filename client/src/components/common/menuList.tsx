@@ -2,6 +2,7 @@ import React from "react";
 import Info from './myInfo';
 import Book from './myBookMark';
 
+
 const menuList = ():JSX.Element =>{
   return (
     <div>
@@ -13,7 +14,6 @@ const menuList = ():JSX.Element =>{
 
     <Info />
     <Book />
-
     
     <div>
       설정이미지 들어갈 부분
