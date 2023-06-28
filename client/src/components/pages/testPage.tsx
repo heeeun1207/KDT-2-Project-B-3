@@ -1,8 +1,8 @@
 import React from 'react';
-import Restroombutton from '../common/Restroombutton';
-import Gas_stationbutton from '../common/Gas_stationbutton';
-import Local_convenience from '../common/Local_convenience';
-import Search from '../common/Search';
+import Restroombutton from '../services/Restroombutton';
+import Gas_stationbutton from '../services/Gas_stationbutton';
+import Local_convenience from '../services/Local_convenience';
+import Search from '../services/Search';
 
 const testPage = (): JSX.Element => {
   return (
