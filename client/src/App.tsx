@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from "react-router-dom";
+import Nav from './components/layout/footer';
 import Header from './components/layout/header';
 import FirstPage from './components/pages/firstPage';
 import LoginPage from './components/pages/loginPage';
@@ -28,6 +29,13 @@ const App = ():JSX.Element => {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/main' element={<MainPage />} />
             </Routes>
+            {[
+            "/",
+            "/login",
+            "/main",
+        ].includes(location.pathname) ? null : (
+        <Nav />
+        )}
         </div>
     );
 }
