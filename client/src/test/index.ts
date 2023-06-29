@@ -12,10 +12,9 @@ console.log(rootPublic)
 //     }
 //   },
 // }));
-app.use(express.static(root));
 app.use(express.static(rootPublic));
 app.get('*', (req: Request, res: Response) => {
-  res.sendFile(path.join(rootPublic ,"./index.html"));
+  res.sendFile(path.join(rootPublic, "index.html"));
 });
 
 app.listen(3030, () => {

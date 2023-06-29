@@ -16,10 +16,15 @@ const clientConfig = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       }
+      ,
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        use: 'file-loader',
+      }
     ],
   },
   resolve: {
-    extensions: ['.tsx','.ts','.js'],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
     filename: 'client.bundle.js',
