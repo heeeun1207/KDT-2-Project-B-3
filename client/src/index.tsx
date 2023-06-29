@@ -1,8 +1,12 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import App from "./App";
-
-// ReactDOM.render(<App />, document.getElementById("root"));
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then((registration) => {
+      console.log('Service Worker registered:', registration);
+    })
+    .catch((error) => {
+      console.log('Error registering Service Worker:', error);
+    });
+}
 import React from "react";
 
 import { createRoot } from "react-dom/client";
