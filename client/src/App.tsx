@@ -12,7 +12,7 @@ const App = ():JSX.Element => {
             case "/" :
                 setPageTitle("테스트");
             break;
-            case "/home" :
+            case "/test" :
                 setPageTitle("홈")
         }
         // setPageTitle(titleMapping[location.pathname] || "");
