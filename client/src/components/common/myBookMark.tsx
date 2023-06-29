@@ -6,11 +6,12 @@ const myBookMark = ():JSX.Element =>{
 
     <div>
       마이로그
-      <button></button>
+      <div><img src="" alt="북마크 표시" /></div>
     </div>
+
     <div>
       즐겨찾기
-      <button></button>
+      <div><img src="" alt="북마크 표시" /></div>
     </div>
     
     </div>

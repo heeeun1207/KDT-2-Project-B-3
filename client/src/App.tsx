@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Header from './components/layout/header';
 import TestPage from './components/pages/testPage';
 import TestPage2 from './components/pages/testPage2';
-import EditButtonPage from './components/pages/editButtonPage';
+//import EditButtonPage from './components/pages/editButtonPage';
 import MyInfo from './components/common/myInfo';
 import "./test.css";
 const App = ():JSX.Element => {
@@ -29,13 +29,10 @@ const App = ():JSX.Element => {
     return (
         <div>
         <Header title={pageTitle} />
-
             <Routes>
             <Route path='/' element={<TestPage />} />
             <Route path='/test' element={<TestPage2 />} />
-            <Route path='/edit' element={<EditButtonPage />} />
             </Routes>
-    <MyInfo/>
         </div>
     );
 }

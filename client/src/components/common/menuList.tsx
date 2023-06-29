@@ -9,7 +9,7 @@ const menuList = ():JSX.Element =>{
 
     <div>
       Jin님, 환영합니다. 
-      <div>알림이미지 들어갈 부분</div>
+      <img src="" alt="알림이미지 들어갈 부분" />
     </div>
 
     <Info />
