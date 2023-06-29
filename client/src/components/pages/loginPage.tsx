@@ -1,11 +1,14 @@
-import React from "react";
+import React from 'react';
 
-const LoginPage: React.FC = () => {
-  return (
-    <>
-      <p>로그인 관련 컴포넌트가 들어갈 자리</p>
-    </>
-  );
+const Listdiv = (): JSX.Element => {
+  const style = {
+    width: '100%',
+    height: '300px',
+    backgroundColor: 'yellow',
+    border: '1px solid',
+  };
+
+  return <div style={style}></div>;
 };
 
-export default LoginPage;
+export default Listdiv;
