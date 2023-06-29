@@ -73,6 +73,7 @@ const Map: React.FC = () => {
   let marker_s, marker_e;
 
   useEffect(() => {
+
     const initTmap = () => {
       map = new window.Tmapv2.Map('map_div', {
         center: new window.Tmapv2.LatLng(37.5652045, 126.98702028),
@@ -85,6 +86,44 @@ const Map: React.FC = () => {
         navigator.geolocation.getCurrentPosition(function (position) {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
+
+          const options = {
+            method: 'POST',
+            headers: {
+              accept: 'application/json',
+              appKey: 'xzcK82uy9L4F0tX5C7RmC6Hpc9dpxvDp2ETeW89t',
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+              tollgateFareOption: 16,
+              roadType: 32,
+              directionOption: 1,
+              endX: 127.373761,
+              endY: 36.345698,
+              endRpFlag: 'G',
+              reqCoordType: 'WGS84GEO',
+              startX: lon,
+              startY: lat,
+              gpsTime: '20191125153000',
+              speed: 10,
+              uncetaintyP: 1,
+              uncetaintyA: 1,
+              uncetaintyAP: 1,
+              carType: 0,
+              // startName: '%EC%9D%84%EC%A7%80%EB%A1%9C%20%EC%9E%85%EA%B5%AC%EC%97%AD',
+              // endName: '%ED%97%A4%EC%9D%B4%EB%A6%AC',
+              // passList: '127.38454163183215,36.35127257501252',
+              // gpsInfoList: '126.939376564495,37.470947057194365,120430,20,50,5,2,12,1_126.939376564495,37.470947057194365,120430,20,50,5,2,12,1',
+              detailPosFlag: '2',
+              resCoordType: 'WGS84GEO',
+              sort: 'index'
+            })
+          };
+          
+          fetch('https://apis.openapi.sk.com/tmap/routes?version=1&callback=function', options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
 
           //? 현재 마커
           marker_s = new window.Tmapv2.Marker({
