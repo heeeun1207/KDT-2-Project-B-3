@@ -2,9 +2,9 @@ import React from 'react';
 
 const Listdiv = (): JSX.Element => {
   const style = {
-    width: '100%',
+    width: '390px',
     height: '300px',
-    backgroundColor: 'yellow',
+    backgroundColor: 'gray',
     border: '1px solid',
   };
 
