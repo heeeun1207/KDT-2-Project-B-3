@@ -5,6 +5,7 @@ import Header from './components/layout/header';
 import FirstPage from './components/pages/firstPage';
 import LoginPage from './components/pages/loginPage';
 import MainPage from './components/pages/mainPage';
+import TestPage from './components/pages/testPage';
 import "./test.css";
 const App = ():JSX.Element => {
     const location = useLocation();
@@ -28,6 +29,7 @@ const App = ():JSX.Element => {
             <Route path='/' element={<FirstPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/main' element={<MainPage />} />
+            <Route path='/test' element={<TestPage />} />
             </Routes>
             {[
             "/",
