@@ -1,4 +1,3 @@
-
 /*
 import React, { useEffect } from 'react';
 
@@ -139,7 +138,6 @@ const Map: React.FC = () => {
   return <div id="map_div"></div>;
 };
 */
-
 
 /*
 module.exports = {
@@ -494,7 +492,6 @@ const SimpleMap: React.FC = () => {
 export default SimpleMap;
 */
 
-
 /*
 import React, { useEffect } from 'react';
 
@@ -571,7 +568,6 @@ export default SimpleMap;
 
 import React, { useEffect, useState } from 'react';
 
-
 declare global {
   interface Window {
     Tmapv2: {
@@ -606,7 +602,6 @@ declare global {
   }
 }
 
-
 const SimpleMap: React.FC = () => {
   //const [map, setMap] = useState<any | null>(null);
   //const [marker, setMarker] = useState<any | null>(null);
@@ -632,7 +627,7 @@ const SimpleMap: React.FC = () => {
             //매개변수를 넣어 3초에 한번씩 갱신하는걸로 시도
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
-            console.log(lat,lon);
+            console.log(lat, lon);
 
             const content =
               "<div style=' position: relative; border-bottom: 1px solid #dcdcdc; line-height: 18px; padding: 0 35px 2px 0;'>" +
@@ -643,8 +638,8 @@ const SimpleMap: React.FC = () => {
 
             startMarker = new window.Tmapv2.Marker({
               position: new window.Tmapv2.LatLng(lat, lon),
-              icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
-              iconSize : new window.Tmapv2.Size(24, 38),
+              icon: 'http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png',
+              iconSize: new window.Tmapv2.Size(24, 38),
               map: map,
             });
 
@@ -664,7 +659,7 @@ const SimpleMap: React.FC = () => {
           },
           (error) => {
             console.error(error);
-          }
+          },
         );
       }
     };
