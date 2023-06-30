@@ -56,7 +56,7 @@ const Map: React.FC = () => {
             method: 'POST',
             headers: {
               accept: 'application/json',
-              appKey: 'xzcK82uy9L4F0tX5C7RmC6Hpc9dpxvDp2ETeW89t',
+              appKey: 'gCHZUQwAx01IpZitfev8C3MlsaVbqskZ8rOwKTVe',
               'content-type': 'application/json'
             },
             body: JSON.stringify({
