@@ -43,6 +43,7 @@ const App = (): JSX.Element => {
         <Route path="/login" element={<LoginPage />} />
         {/* <Route path="/signUp" element={<SignUpPage />} /> */}
         <Route path="/edit" element={<EditButtonPage />} />
+        <Route path="/edit/:buttonName" element={<EditButtonPage />} />
       </Routes>
       </BtnContext.Provider>
     </div>

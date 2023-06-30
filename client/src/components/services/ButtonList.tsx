@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { BtnContext } from '../context/btnContext';
-
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import YesNoModal from '../common/YesNoModal';
+import { BtnContext } from '../context/btnContext';
 import Custombutton from './Custombutton';
 
 interface ButtonListProps {
@@ -19,64 +18,60 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   const [buttons, setButtons] = useState<Button[]>([]);
   const [selectedBtn, setSelectedBtn] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  // 페이지 이동에 사용할 navigate
   const navigate = useNavigate();
-  const btnContextData = useContext(BtnContext)
-  // useEffect(() => {
-  //   // 가상으로 가져온 버튼 데이터
-  //   const virtualButtons: Button[] = [
-  //     {
-  //       value: '편의점',
-  //       image: 'convenience-store.jpg',
-  //       name: '편의점',
-  //     },
-  //     {
-  //       value: '카페',
-  //       image: 'cafe.jpg',
-  //       name: '카페',
-  //     },
-  //     {
-  //       value: '주유소',
-  //       image: 'gas-station.jpg',
-  //       name: '주유소',
-  //     },
-  //     {
-  //       value: '화장실',
-  //       image: 'restroom.jpg',
-  //       name: '화장실',
-  //     },
-  //   ];
+  const btnContextData = useContext(BtnContext);
 
-  //   // 추가 버튼
-  //   const additionalButton: Button = {
-  //     value: '추가 버튼',
-  //     image: 'additional-button.jpg',
-  //     name: '추가 버튼',
-  //   };
+  useEffect(() => {
+    const virtualButtons: Button[] = [
+      {
+        value: '편의점',
+        image: 'convenience-store.jpg',
+        name: '편의점',
+      },
+      {
+        value: '카페',
+        image: 'cafe.jpg',
+        name: '카페',
+      },
+      {
+        value: '주유소',
+        image: 'gas-station.jpg',
+        name: '주유소',
+      },
+      {
+        value: '화장실',
+        image: 'restroom.jpg',
+        name: '화장실',
+      },
+    ];
 
-  //   // 가상 데이터에 추가 버튼을 포함하여 상태에 설정
-  //   setButtons([...virtualButtons, additionalButton]);
-  // }, []);
+    const additionalButton: Button = {
+      value: '추가 버튼',
+      image: 'additional-button.jpg',
+      name: '추가 버튼',
+    };
 
-  // const filteredButtons = buttons.filter((button) =>
-  //   button.name.includes(searchTerm),
-  // );
+    setButtons([...virtualButtons, additionalButton]);
+  }, []);
+
+  const filteredButtons = buttons.filter((button) =>
+    button.name.includes(searchTerm),
+  );
 
   const handleButtonClick = (buttonName: string) => {
     console.log('Button clicked:', buttonName);
     setSelectedBtn(buttonName);
-    setIsModalOpen(true); // 모달 열기
+    setIsModalOpen(true);
   };
 
   const handleModalClose = () => {
-    setIsModalOpen(false); // 모달 닫기
+    setIsModalOpen(false);
   };
 
-  const handleModalConfirm = () => {
-    console.log('Confirmed'); // 확인 버튼을 클릭한 경우 수행할 로직
-    setIsModalOpen(false); // 모달 닫기
-    // 단축 버튼 편집 페이지로 이동시킴
-    navigate('/edit');
+  const handleModalConfirm = (buttonName: string) => {
+    console.log('Confirmed:', buttonName);
+    setIsModalOpen(false);
+    navigate(`/edit/${buttonName}`);
   };
 
   return (
@@ -93,7 +88,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
         <YesNoModal
           isOpen={isModalOpen}
           onClose={handleModalClose}
-          onConfirm={handleModalConfirm}
+          onConfirm={() => handleModalConfirm(selectedBtn)}
         />
       )}
     </div>
