@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import YesNoModal from '../common/YesNoModal';
 import Custombutton from './Custombutton';
 
 interface ButtonListProps {
@@ -13,7 +14,9 @@ interface Button {
 
 const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   const [buttons, setButtons] = useState<Button[]>([]);
-const [selectedBtn, setSlectedBtn] = useState<string>("")
+  const [selectedBtn, setSelectedBtn] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   useEffect(() => {
     // 가상으로 가져온 버튼 데이터
     const virtualButtons: Button[] = [
@@ -54,14 +57,24 @@ const [selectedBtn, setSlectedBtn] = useState<string>("")
     button.name.includes(searchTerm),
   );
 
-  // 버튼을 클릭했을 때 선택한 버튼이 어떤 것인지 데이터를 가져옴
   const handleButtonClick = (buttonName: string) => {
     console.log('Button clicked:', buttonName);
-    setSlectedBtn(buttonName)
+    setSelectedBtn(buttonName);
+    setIsModalOpen(true); // 모달 열기
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false); // 모달 닫기
+  };
+
+  const handleModalConfirm = () => {
+    console.log('Confirmed'); // 확인 버튼을 클릭한 경우 수행할 로직
+    setIsModalOpen(false); // 모달 닫기
   };
 
   return (
-    <div> {selectedBtn}
+    <div>
+      {selectedBtn}
       {filteredButtons.map((button, index) => (
         <Custombutton
           key={index}
@@ -69,6 +82,11 @@ const [selectedBtn, setSlectedBtn] = useState<string>("")
           onClick={() => handleButtonClick(button.name)}
         />
       ))}
+      <YesNoModal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        onConfirm={handleModalConfirm}
+      />
     </div>
   );
 };
