@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { BtnContext } from '../context/btnContext';
+
 import { useNavigate } from 'react-router-dom';
 import YesNoModal from '../common/YesNoModal';
 import Custombutton from './Custombutton';
+
 interface ButtonListProps {
   searchTerm: string;
 }
@@ -18,7 +21,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   // 페이지 이동에 사용할 navigate
   const navigate = useNavigate();
-
+  const btnContextData = useContext(BtnContext)
   useEffect(() => {
     // 가상으로 가져온 버튼 데이터
     const virtualButtons: Button[] = [
@@ -79,7 +82,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   return (
     <div>
       {selectedBtn}
-      {filteredButtons.map((button, index) => (
+      {btnContextData.map((button, index) => (
         <Custombutton
           key={index}
           buttonInfo={button}
