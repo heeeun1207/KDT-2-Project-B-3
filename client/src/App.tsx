@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/layout/header';
-import Custompage from './components/pages/custompage';
-import LoginPage from './components/pages/loginPage';
-import Mainpage from './components/pages/mainPage';
-import ProtoTestPage from './components/pages/testPageHer';
+import Custompage from './components/page/custompage';
+import LoginPage from './components/page/loginPage';
+import Mainpage from './components/page/mainPage';
+import ProtoTestPage from './components/page/testPageHer';
 
 const App = (): JSX.Element => {
   const location = useLocation();
