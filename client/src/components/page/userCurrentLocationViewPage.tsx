@@ -629,8 +629,10 @@ const SimpleMap: React.FC = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
+            //매개변수를 넣어 3초에 한번씩 갱신하는걸로 시도
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
+            console.log(lat,lon);
 
             const content =
               "<div style=' position: relative; border-bottom: 1px solid #dcdcdc; line-height: 18px; padding: 0 35px 2px 0;'>" +
