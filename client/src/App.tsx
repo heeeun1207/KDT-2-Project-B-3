@@ -7,6 +7,7 @@ import Mainpage from './components/page/mainPage';
 import ProtoTestPage from './components/page/testPageHer';
 import TestPage from './components/page/testPage';
 import PoliLine from './components/page/poliLine';
+import CurrentLocationViewPage from './components/page/userCurrentLocationViewPage';
 
 const App = (): JSX.Element => {
   const location = useLocation();
@@ -35,6 +36,7 @@ const App = (): JSX.Element => {
         <Route path="/" element={<ProtoTestPage />} />
         <Route path="/main" element={<Mainpage />} />
         <Route path="/test" element={<TestPage />} />
+        <Route path="/check" element={<CurrentLocationViewPage />} />
         <Route path="/poli" element={<PoliLine />} />
         <Route path="/custom" element={<Custompage />} />
         <Route path="/login" element={<LoginPage />} />
