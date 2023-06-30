@@ -10,7 +10,12 @@ interface Button {
 const EditButtonPage: React.FC = () => {
   const btnContextData = useContext(DefaultBtnData);
   const paramData = useParams()
-  console.log("이거야아아아아", Object.values(paramData))
+  if (!paramData || !paramData.buttonValue) {
+    // URL 파라미터가 없는 경우 또는 buttonValue 파라미터가 없는 경우 처리
+    return <div>URL 파라미터가 존재하지 않습니다.</div>;
+  }
+  const buttonValue = paramData.buttonValue.replace('$', '');
+  console.log(buttonValue);
   return (
     <div>
       <p><strong>어떤 버튼에 적용하겠습니까?</strong></p>
