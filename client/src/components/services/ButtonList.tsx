@@ -83,7 +83,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
         <YesNoModal
           isOpen={isModalOpen}
           onClose={handleModalClose}
-          onConfirm={handleModalConfirm}
+          onConfirm={() => handleModalConfirm(selectedBtn)}
         />
       )}
     </div>
