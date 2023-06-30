@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { BtnContext, BtnContextData } from "./components/context/btnContext";
 import Header from './components/layout/header';
 import Custompage from './components/page/custompage';
 import EditButtonPage from './components/page/editButtonPage';
 import LoginPage from './components/page/loginPage';
 import Mainpage from './components/page/mainPage';
 import ProtoTestPage from './components/page/testPageHer';
-
 const App = (): JSX.Element => {
+  console.log(BtnContextData)
   const location = useLocation();
   const [pageTitle, setPageTitle] = useState('');
   interface TitleMapping {
@@ -34,6 +35,7 @@ const App = (): JSX.Element => {
   return (
     <div>
       <Header title={pageTitle} />
+      <BtnContext.Provider value={BtnContextData}>
       <Routes>
         <Route path="/" element={<ProtoTestPage />} />
         <Route path="/main" element={<Mainpage />} />
@@ -42,6 +44,7 @@ const App = (): JSX.Element => {
         {/* <Route path="/signUp" element={<SignUpPage />} /> */}
         <Route path="/edit" element={<EditButtonPage />} />
       </Routes>
+      </BtnContext.Provider>
     </div>
   );
 };
