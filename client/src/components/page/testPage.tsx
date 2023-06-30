@@ -58,36 +58,82 @@ function getRP() {
         trafficInfo: 'Y',
       };
 
-      var params = {
-        onComplete: onComplete,
-        onError: onError,
-      };
+          const options = {
+            method: 'POST',
+            headers: {
+              accept: 'application/json',
+              appKey: 'gCHZUQwAx01IpZitfev8C3MlsaVbqskZ8rOwKTVe',
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+              //* 요금 가중치 정보
+              tollgateFareOption: 16,
+              //* 출발 지점의 도로 타입 (32는 기본값(가까운도로))
+              roadType: 32,
+              //* 출발지점의 주행방향 (1은 주행방향 우선)
+              directionOption: 1,
+              //* 목적지 x좌표
+              endX: 127.373761,
+              //* 목적지 y좌표
+              endY: 36.345698,
+              //* 목적지의 RpPlag
+              endRpFlag: 'G',
+              //* WGS84GEO -> 위경도
+              reqCoordType: 'WGS84GEO',
+              //* 출발지 x좌표
+              startX: lon,
+              //* 출발지 y좌표
+              startY: lat,
+              //* GPS타임
+              gpsTime: '20191125153000',
+              //* 차량 진행속도
+              speed: 10,
+              //* 위성수 0 ~ 12
+              uncetaintyP: 1,
+              //* 측위 방법 1: 측위 불량
+              uncetaintyA: 1,
+              //* (Horizontal Dilution of Precision: 0.1단위로 정수화)
+              uncetaintyAP: 1,
+              //* 톨게이트 요금에 대한 차종(0: 미선택)
+              carType: 0,
+              //* 출발지 명칭
+              // startName: '%EC%9D%84%EC%A7%80%EB%A1%9C%20%EC%9E%85%EA%B5%AC%EC%97%AD',
+              //* 도착지 명칭
+              // endName: '%ED%97%A4%EC%9D%B4%EB%A6%AC',
+              //* 경유지들의 도착
+              // passList: '127.38454163183215,36.35127257501252',
+              //* gps궤적 정보 목록
+              // gpsInfoList: '126.939376564495,37.470947057194365,120430,20,50,5,2,12,1_126.939376564495,37.470947057194365,120430,20,50,5,2,12,1',
+              detailPosFlag: '2',
+              resCoordType: 'WGS84GEO',
+              sort: 'index'
+            })
+          };
+          
+          fetch('https://apis.openapi.sk.com/tmap/routes?version=1&callback=function', options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
 
-      // TData 객체 생성
-      var tData = new window.Tmapv2.extension.TData();
-
-      // TData 객체의 경로요청 함수
-      tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
-
-      setInterval(function () {
-        marker_s = new window.Tmapv2.Marker({
-          position: new window.Tmapv2.LatLng(lat, lon),
-          icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
-          iconSize: new window.Tmapv2.Size(20, 20),
-          map: map,
-        });
-        initTmap();
-      }, 1000);
-    });
+          //? 현재 마커
+          marker_s = new window.Tmapv2.Marker({
+            position: new window.Tmapv2.LatLng(lat, lon),
+            icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
+            iconSize: new window.Tmapv2.Size(20, 20),
+            map: map,
+          })
+          initTmap();
+        }, 1000);
+      });
+    }
   }
-}
-// const initTmap = () => {
-//   map = new window.Tmapv2.Map('map_div', {
-//     center: new window.Tmapv2.LatLng(37.5652045, 126.98702028),
-//     width: '390px',
-//     height: '844px',
-//     zoom: 19,
-//   });
+  // const initTmap = () => {
+  //   map = new window.Tmapv2.Map('map_div', {
+  //     center: new window.Tmapv2.LatLng(37.5652045, 126.98702028),
+  //     width: '390px',
+  //     height: '844px',
+  //     zoom: 19,
+  //   });
 
 // if (navigator.geolocation) {
 //   navigator.geolocation.getCurrentPosition(function (position) {
