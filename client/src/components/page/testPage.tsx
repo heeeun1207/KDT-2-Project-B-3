@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 declare global {
   interface Window {
     Tmapv2: {
+      Polyline: any;
       Size: any;
       Map: new (
         arg0: string,
