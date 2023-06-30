@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 // 최초 컨텍스트에 더미 데이터 넣음
-interface Button {
+export interface Button {
   value: string;
   image: string;
   name: string;
