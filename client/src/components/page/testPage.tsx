@@ -44,27 +44,32 @@ const Map: React.FC = () => {
   }
 
   function getRP() {
-    var s_latlng = new window.Tmapv2.LatLng(37.553756, 126.925356);
-    var e_latlng = new window.Tmapv2.LatLng(37.554034, 126.975598);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        var s_latlng = new window.Tmapv2.LatLng(lat, lon);
+        var e_latlng = new window.Tmapv2.LatLng(36.345698, 127.373761);
 
-    var optionObj = {
-      reqCoordType: 'WGS84GEO', //요청 좌표계 옵셥 설정입니다.
-      resCoordType: 'WGS84GEO', //응답 좌표계 옵셥 설정입니다.
-      trafficInfo: 'Y',
-    };
+        var optionObj = {
+          reqCoordType: 'WGS84GEO', //요청 좌표계 옵셥 설정입니다.
+          resCoordType: 'WGS84GEO', //응답 좌표계 옵셥 설정입니다.
+          trafficInfo: 'Y',
+        };
 
-    var params = {
-      onComplete: onComplete,
-      onError: onError,
-    };
+        var params = {
+          onComplete: onComplete,
+          onError: onError,
+        };
 
-    // TData 객체 생성
-    var tData = new window.Tmapv2.extension.TData();
+        // TData 객체 생성
+        var tData = new window.Tmapv2.extension.TData();
 
-    // TData 객체의 경로요청 함수
-    tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
+        // TData 객체의 경로요청 함수
+        tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
+      });
+    }
   }
-
   // const initTmap = () => {
   //   map = new window.Tmapv2.Map('map_div', {
   //     center: new window.Tmapv2.LatLng(37.5652045, 126.98702028),
@@ -73,10 +78,10 @@ const Map: React.FC = () => {
   //     zoom: 19,
   //   });
 
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(function (position) {
-  //       let lat = position.coords.latitude;
-  //       let lon = position.coords.longitude;
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(function (position) {
+  //     let lat = position.coords.latitude;
+  //     let lon = position.coords.longitude;
 
   //       const options = {
   //         method: 'POST',
@@ -167,14 +172,20 @@ const Map: React.FC = () => {
   useEffect(() => {
     // 페이지가 로딩이 된 후 호출하는 함수입니다.
     function initTmap() {
-      // map 생성
-      // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
-      map = new window.Tmapv2.Map('map_div', {
-        center: new window.Tmapv2.LatLng(37.5652045, 126.98702028), // 지도 초기 좌표
-        width: '100%', // 지도의 넓이
-        height: '400px', // 지도의 높이
-        zoom: 17, // 지도의 줌레벨
-      });
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          let lat = position.coords.latitude;
+          let lon = position.coords.longitude;
+          // map 생성
+          // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
+          map = new window.Tmapv2.Map('map_div', {
+            center: new window.Tmapv2.LatLng(lat, lon), // 지도 초기 좌표
+            width: '390px', // 지도의 넓이
+            height: '844px', // 지도의 높이
+            zoom: 17, // 지도의 줌레벨
+          });
+        });
+      }
     }
     window.addEventListener('load', initTmap);
   }, []);
@@ -184,7 +195,7 @@ const Map: React.FC = () => {
     onComplete: () => void;
     onProgress: any;
     onError: any;
-  }):void {
+  }): void {
     console.log(this._responseData); //json으로 데이터를 받은 정보들을 콘솔창에서 확인할 수 있습니다.
 
     var jsonObject = new window.Tmapv2.extension.GeoJSON();
@@ -209,7 +220,7 @@ const Map: React.FC = () => {
       }, onError); // onError 함수 추가
     }
 
-    map.setZoom(14);
+    map.setZoom(18);
   }
 
   return (
