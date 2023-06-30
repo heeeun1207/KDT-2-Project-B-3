@@ -16,7 +16,7 @@ interface Button {
 
 const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   const [buttons, setButtons] = useState<Button[]>([]);
-  const [selectedBtn, setSelectedBtn] = useState<string>('');
+  const [selectedBtnIndex, setSelectedBtnIndex] = useState<number>(-1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const btnContextData = useContext(BtnContext);
@@ -54,13 +54,9 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
     setButtons([...virtualButtons, additionalButton]);
   }, []);
 
-  const filteredButtons = buttons.filter((button) =>
-    button.name.includes(searchTerm),
-  );
-
-  const handleButtonClick = (buttonName: string) => {
-    console.log('Button clicked:', buttonName);
-    setSelectedBtn(buttonName);
+  const handleButtonClick = (buttonIndex: number) => {
+    console.log('Button clicked:', buttons[buttonIndex]);
+    setSelectedBtnIndex(buttonIndex);
     setIsModalOpen(true);
   };
 
@@ -68,27 +64,26 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
     setIsModalOpen(false);
   };
 
-  const handleModalConfirm = (buttonName: string) => {
-    console.log('Confirmed:', buttonName);
+  const handleModalConfirm = () => {
+    console.log('Confirmed:', buttons[selectedBtnIndex]);
     setIsModalOpen(false);
-    navigate(`/edit/${buttonName}`);
+    navigate(`/edit/$${Object.values(buttons[selectedBtnIndex])}`);
   };
 
   return (
     <div>
-      {selectedBtn}
       {btnContextData.map((button, index) => (
         <Custombutton
           key={index}
           buttonInfo={button}
-          onClick={() => handleButtonClick(button.name)}
+          onClick={() => handleButtonClick(index)}
         />
       ))}
       {isModalOpen && (
         <YesNoModal
           isOpen={isModalOpen}
           onClose={handleModalClose}
-          onConfirm={() => handleModalConfirm(selectedBtn)}
+          onConfirm={handleModalConfirm}
         />
       )}
     </div>

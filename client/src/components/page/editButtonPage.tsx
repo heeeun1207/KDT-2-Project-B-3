@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 // import EditButton from '../common/editButtonSelect';
 import { DefaultBtnData } from "../context/btnContext";
@@ -9,24 +9,8 @@ interface Button {
 }
 const EditButtonPage: React.FC = () => {
   const btnContextData = useContext(DefaultBtnData);
-  const [contextData, setContextData] = useState<Button[]>(btnContextData) as [Button[], (newState: Button[]) => void];
-  const { buttonName } = useParams();
-  console.log("테스트", buttonName);
-
-  const changeBtnData = () => {
-    const updatedData = btnContextData.map(btn => {
-      if (btn.name === buttonName) {
-        return {
-          ...btn,
-          name: buttonName
-        };
-      }
-      return btn;
-    });
-  
-    setContextData(updatedData);
-  };
-  
+  const test = useParams()
+  console.log("이거야아아아아", test)
   return (
     <div>
       <p><strong>어떤 버튼에 적용하겠습니까?</strong></p>
@@ -35,7 +19,7 @@ const EditButtonPage: React.FC = () => {
       <div>2</div>
       <div>3</div>
 
-      <button onClick={changeBtnData}>확인</button>
+      <button>확인</button>
     </div>
   );
 };
