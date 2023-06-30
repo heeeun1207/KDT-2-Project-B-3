@@ -1,3 +1,5 @@
+
+/*
 import React, { useEffect } from 'react';
 
 declare global {
@@ -117,16 +119,165 @@ const Map: React.FC = () => {
 						iconSize : new window.Tmapv2.Size(24, 38),
             map: map,
           });
-
-          //? 도착 마커
-          marker_e = new window.Tmapv2.Marker({
-            position: new window.Tmapv2.LatLng(36.345698, 127.373761),
-            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-						iconSize : new window.Tmapv2.Size(24, 38),
-            map: map,
-          });
           
           //? 메시지 창
+          const InfoWindow = new window.Tmapv2.InfoWindow({
+            position: new window.Tmapv2.LatLng(lat, lon),
+            type: 2,
+            map: map,
+          });
+
+          map.setCenter(new window.Tmapv2.LatLng(lat, lon));
+          map.setZoom(19);
+        });
+      }
+    };
+
+    window.addEventListener('load', initTmap);
+  }, []);
+
+  return <div id="map_div"></div>;
+};
+*/
+
+
+/*
+module.exports = {
+  tmapKey: "YOUR_TMAP_API_KEY",
+};
+
+import React, { useState, useEffect } from "react";
+import Tmap from "tmap";
+
+const App = () => {
+  const [map, setMap] = useState(null);
+  const [marker, setMarker] = useState(null);
+
+  useEffect(() => {
+    // Get Tmap API key
+    const tmapKey = "YOUR_TMAP_API_KEY";
+
+    // Create Tmap map
+    const map = new Tmap(tmapKey);
+
+    // Set map center
+    map.setCenter(new Tmap.LatLng(37.566617, 126.978377));
+
+    // Set map zoom level
+    map.setZoom(15);
+
+    // Set map onMapClick event
+    map.onMapClick((event) => {
+      const latLng = event.latLng;
+
+      // Create marker
+      const marker = new Tmap.Marker({
+        position: latLng,
+      });
+
+      // Set marker position
+      setMarker(marker);
+
+      // Set marker distance
+      setDistance(calculateDistance(latLng));
+    });
+
+    setMap(map);
+  }, []);
+
+  useEffect(() => {
+    // Update marker position
+    const intervalId = setInterval(() => {
+      if (marker) {
+        marker.setPosition(navigator.geolocation.getCurrentPosition().coords);
+      }
+    }, 2000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
+  return (
+    <div>
+      <TmapMap map={map} />
+      {marker && (
+        <Tmap.Marker marker={marker} />
+      )}
+      <div>Distance: {distance}</div>
+    </div>
+  );
+};
+
+export default App;
+*/
+
+import React, { useEffect } from 'react';
+
+declare global {
+  interface Window {
+    Tmapv2: {
+      Polyline: any;
+      Size: any;
+      Map: new (
+        arg0: string,
+        arg1: { center: any; width: string; height: string; zoom: number },
+      ) => {
+        setCenter: (arg0: any) => void;
+        setZoom: (arg0: number) => void;
+      };
+      LatLng: new (arg0: number, arg1: number) => any;
+      Marker: new (arg0: {
+        position: any;
+        icon: any;
+        iconSize: any;
+        map: {
+          setCenter: (arg0: any) => void;
+          setZoom: (arg0: number) => void;
+        };
+      }) => any;
+      InfoWindow: new (arg0: {
+        position: any;
+        type: number;
+        map: {
+          setCenter: (arg0: any) => void;
+          setZoom: (arg0: number) => void;
+        };
+      }) => any;
+    };
+  }
+}
+
+const Map: React.FC = () => {
+  let map: {
+    setCenter: (arg0: any) => void;
+    setZoom: (arg0: number) => void;
+  };
+  let marker_s, marker_e;
+
+  useEffect(() => {
+    const initTmap = () => {
+      map = new window.Tmapv2.Map('map_div', {
+        center: new window.Tmapv2.LatLng(37.5652045, 126.98702028),
+        width: '390px',
+        height: '844px',
+        zoom: 19,
+      });
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          // 현재 위치 마커
+          marker_s = new window.Tmapv2.Marker({
+            position: new window.Tmapv2.LatLng(lat, lon),
+            icon: 'http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png',
+            iconSize: new window.Tmapv2.Size(24, 38),
+            map: map,
+          });
+
+          // 메시지 창
           const InfoWindow = new window.Tmapv2.InfoWindow({
             position: new window.Tmapv2.LatLng(lat, lon),
             type: 2,
