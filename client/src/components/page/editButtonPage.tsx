@@ -1,7 +1,7 @@
 import React from "react";
 import EditButton from '../common/editButtonSelect';
 
-const editButtonPage = ():JSX.Element=> {
+const FirstPage: React.FC = () => {
   return (<div>
     <h3>단축 편집 버튼</h3>
     <p><strong>어떤 버튼에 적용하겠습니까?</strong></p>
@@ -12,4 +12,5 @@ const editButtonPage = ():JSX.Element=> {
 
   </div>)
 };
-export default editButtonPage;
+
+export default FirstPage;
