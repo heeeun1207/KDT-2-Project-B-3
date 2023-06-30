@@ -9,8 +9,8 @@ interface Button {
 }
 const EditButtonPage: React.FC = () => {
   const btnContextData = useContext(DefaultBtnData);
-  const test = useParams()
-  console.log("이거야아아아아", test)
+  const paramData = useParams()
+  console.log("이거야아아아아", Object.values(paramData))
   return (
     <div>
       <p><strong>어떤 버튼에 적용하겠습니까?</strong></p>
