@@ -5,6 +5,21 @@ interface Button {
   image: string;
   name: string;
 }
+export const DefaultBtn = createContext<Button[]>([{
+  value: '편의점',
+  image: 'convenience-store.jpg',
+  name: '편의점',
+},
+{
+  value: '카페',
+  image: 'cafe.jpg',
+  name: '카페',
+},
+{
+  value: '주유소',
+  image: 'gas-station.jpg',
+  name: '주유소',
+}])
 export const BtnContext = createContext<Button[]>([
   {
     value: '편의점',
