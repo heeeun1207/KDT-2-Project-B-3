@@ -5,7 +5,7 @@ interface Button {
   image: string;
   name: string;
 }
-export const DefaultBtn = createContext<Button[]>([{
+export const DefaultBtnData = createContext<Button[]>([{
   value: '편의점',
   image: 'convenience-store.jpg',
   name: '편의점',
