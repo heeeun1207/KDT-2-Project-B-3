@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Custombutton from './Custombutton';
 
 interface ButtonListProps {
@@ -13,7 +13,7 @@ interface Button {
 
 const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   const [buttons, setButtons] = useState<Button[]>([]);
-
+const [selectedBtn, setSlectedBtn] = useState<string>("")
   useEffect(() => {
     // 가상으로 가져온 버튼 데이터
     const virtualButtons: Button[] = [
@@ -54,12 +54,14 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
     button.name.includes(searchTerm),
   );
 
+  // 버튼을 클릭했을 때 선택한 버튼이 어떤 것인지 데이터를 가져옴
   const handleButtonClick = (buttonName: string) => {
     console.log('Button clicked:', buttonName);
+    setSlectedBtn(buttonName)
   };
 
   return (
-    <div>
+    <div> {selectedBtn}
       {filteredButtons.map((button, index) => (
         <Custombutton
           key={index}
