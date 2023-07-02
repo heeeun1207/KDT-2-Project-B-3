@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { BtnContext, Button } from '../context/btnContext';
+import { DefaultBtnData, Button } from '../context/btnContext';
 
 const MainBtn = (): JSX.Element => {
-  const Contextdata = useContext<Button[]>(BtnContext);
+  const Contextdata = useContext<Button[]>(DefaultBtnData);
 
   return (
     <div>
@@ -13,6 +13,7 @@ const MainBtn = (): JSX.Element => {
 
         return (
           <div key={index}>
+            {/* 버튼으로 우선 바꿔보자  */}
             <p>Name: {Name}</p>
             {/* <p>Value: {Value}</p> */}
             {/* <img src={Image} alt={Name} /> */}

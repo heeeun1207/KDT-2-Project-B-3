@@ -6,10 +6,8 @@ import Custompage from './components/page/custompage';
 import EditButtonPage from './components/page/editButtonPage';
 import LoginPage from './components/page/loginPage';
 import Mainpage from './components/page/mainPage';
-import TestPage from './components/page/testPage';
+// import TestPage from './components/page/testPage';
 import ProtoTestPage from './components/page/testPageHer';
-import TestPage from './components/page/testPage';
-import PoliLine from './components/page/poliLine';
 import CurrentLocationViewPage from './components/page/userCurrentLocationViewPage';
 
 const App = (): JSX.Element => {
@@ -44,9 +42,8 @@ const App = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<ProtoTestPage />} />
           <Route path="/main" element={<Mainpage />} />
-          <Route path="/test" element={<TestPage />} />
+          {/* <Route path="/test" element={<TestPage />} /> */}
           <Route path="/check" element={<CurrentLocationViewPage />} />
-          <Route path="/poli" element={<PoliLine />} />
           <Route path="/custom" element={<Custompage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* <Route path="/signUp" element={<SignUpPage />} /> */}
