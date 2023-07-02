@@ -68,6 +68,16 @@ const Map: React.FC = () => {
 
         // TData 객체의 경로요청 함수
         tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
+        
+        setInterval(function () {
+          marker_s = new window.Tmapv2.Marker({
+            position: new window.Tmapv2.LatLng(lat, lon),
+            icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
+            iconSize: new window.Tmapv2.Size(20, 20),
+            map: map,
+          })
+          initTmap();
+        }, 1000);
       });
     }
   }
@@ -171,23 +181,6 @@ const Map: React.FC = () => {
   // };
 
   // 3. 위치 관제 시작
-  var cnt = 1;
-  let myPosition = setInterval(function () {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
-
-          //? 현재 마커
-        marker_s = new window.Tmapv2.Marker({
-          position: new window.Tmapv2.LatLng(lat, lon),
-          icon: 'https://ibb.co/Ryzzgsw',
-          iconSize: new window.Tmapv2.Size(20, 20),
-          map: map,
-        });
-      })
-    }
-  }, 1000);
 
   // function RESET_MARKER() {
   //   for (var i = 0; i < markerList.length; i++) {
@@ -213,24 +206,25 @@ const Map: React.FC = () => {
   //   }
   // }
 
-  useEffect(() => {
-    // 페이지가 로딩이 된 후 호출하는 함수입니다.
-    function initTmap() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          let lat = position.coords.latitude;
-          let lon = position.coords.longitude;
-          // map 생성
-          // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
-          map = new window.Tmapv2.Map('map_div', {
-            center: new window.Tmapv2.LatLng(lat, lon), // 지도 초기 좌표
-            width: '390px', // 지도의 넓이
-            height: '844px', // 지도의 높이
-            zoom: 17, // 지도의 줌레벨
-          });
+  // 페이지가 로딩이 된 후 호출하는 함수입니다.
+  function initTmap() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        // map 생성
+        // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
+        map = new window.Tmapv2.Map('map_div', {
+          center: new window.Tmapv2.LatLng(lat, lon), // 지도 초기 좌표
+          width: '390px', // 지도의 넓이
+          height: '844px', // 지도의 높이
+          zoom: 17, // 지도의 줌레벨
         });
-      }
+      });
     }
+  }
+
+  useEffect(() => {
     window.addEventListener('load', initTmap);
   }, []);
 
