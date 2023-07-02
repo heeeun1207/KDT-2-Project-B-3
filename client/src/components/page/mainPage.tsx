@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MyInfo from '../common/myInfo';
 import Search from '../common/Search';
 // import Listdiv from '../services/Listdiv';
-import MainBtn from '../services/mainbtn';
+import MainBtn from '../common/mainbtn';
 const Mainpage = (): JSX.Element => {
   const handleSearch = (searchTerm: string) => {
     // Handle the search logic here
