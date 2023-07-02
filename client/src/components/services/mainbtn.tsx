@@ -8,15 +8,16 @@ const MainBtn = (): JSX.Element => {
     <div>
       {Contextdata.map((data, index) => {
         let Name = data.name;
-        let Value = data.value;
+        // let Value = data.value;
         let Image = data.image;
 
         return (
           <div key={index}>
-            {/* 버튼으로 우선 바꿔보자  */}
-            <p>Name: {Name}</p>
-            {/* <p>Value: {Value}</p> */}
-            {/* <img src={Image} alt={Name} /> */}
+            <button>
+              <img src={Image} alt={Name} />
+              {/* <span>Name: {Name}</span>
+              <span>Value: {Value}</span> */}
+            </button>
           </div>
         );
       })}

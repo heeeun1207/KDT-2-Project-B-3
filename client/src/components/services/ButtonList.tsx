@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import YesNoModal from '../common/YesNoModal';
 import { BtnContext } from '../context/btnContext';
-import Custombutton from './Custombutton';
+import CustomButton from './customButton';
 
 interface ButtonListProps {
   searchTerm: string;
@@ -73,7 +73,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   return (
     <div>
       {btnContextData.map((button, index) => (
-        <Custombutton
+        <CustomButton
           key={index}
           buttonInfo={button}
           onClick={() => handleButtonClick(index)}
