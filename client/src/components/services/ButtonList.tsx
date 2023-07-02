@@ -25,22 +25,22 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
     const virtualButtons: Button[] = [
       {
         value: '편의점',
-        image: 'convenience-store.jpg',
+        image: 'convenience-store.png',
         name: '편의점',
       },
       {
         value: '카페',
-        image: 'cafe.jpg',
+        image: 'cafe.png',
         name: '카페',
       },
       {
         value: '주유소',
-        image: 'gas-station.jpg',
+        image: 'gas_station.png',
         name: '주유소',
       },
       {
         value: '화장실',
-        image: 'restroom.jpg',
+        image: 'restroom.png',
         name: '화장실',
       },
     ];
