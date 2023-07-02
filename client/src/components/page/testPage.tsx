@@ -49,6 +49,7 @@ const Map: React.FC = () => {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
         var s_latlng = new window.Tmapv2.LatLng(lat, lon);
+        //? 도착지 설정되면 좌표값으로 들어갈 곳
         var e_latlng = new window.Tmapv2.LatLng(36.345698, 127.373761);
 
         var optionObj = {
@@ -151,7 +152,7 @@ const Map: React.FC = () => {
   //         map: map,
   //       });
 
-  //       //? 도착 마커
+  //       //? 도착 마커ㅍ
   //       marker_e = new window.Tmapv2.Marker({
   //         position: new window.Tmapv2.LatLng(36.345698, 127.373761),
   //         icon: 'http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png',
@@ -168,6 +169,49 @@ const Map: React.FC = () => {
   //     });
   //   }
   // };
+
+  // 3. 위치 관제 시작
+  var cnt = 1;
+  let myPosition = setInterval(function () {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+
+          //? 현재 마커
+        marker_s = new window.Tmapv2.Marker({
+          position: new window.Tmapv2.LatLng(lat, lon),
+          icon: 'https://ibb.co/Ryzzgsw',
+          iconSize: new window.Tmapv2.Size(20, 20),
+          map: map,
+        });
+      })
+    }
+  }, 1000);
+
+  // function RESET_MARKER() {
+  //   for (var i = 0; i < markerList.length; i++) {
+  //     if (undefined != markerList[i]) {
+  //       markerList[i].setMap(null);
+
+  //       if (i == markerList.length - 1) {
+  //         markerList = [];
+  //       }
+  //     }
+  //   }
+  // }
+
+  // function RESET_MARKER2() {
+  //   for (var i = 0; i < beforeMarkerList.length; i++) {
+  //     if (undefined != beforeMarkerList[i]) {
+  //       beforeMarkerList[i].setMap(null);
+
+  //       if (i == beforeMarkerList.length - 1) {
+  //         beforeMarkerList = [];
+  //       }
+  //     }
+  //   }
+  // }
 
   useEffect(() => {
     // 페이지가 로딩이 된 후 호출하는 함수입니다.
