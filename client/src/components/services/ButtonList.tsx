@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import YesNoModal from '../common/YesNoModal';
 import { BtnContext } from '../context/btnContext';
-import CustomButton from './customButton';
+import Custombutton from './Custombutton';
 
 interface ButtonListProps {
   searchTerm: string;
@@ -67,13 +67,16 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   const handleModalConfirm = () => {
     console.log('Confirmed:', buttons[selectedBtnIndex]);
     setIsModalOpen(false);
-    navigate(`/edit/$${Object.values(buttons[selectedBtnIndex])}`);
+    const selectedButton = buttons[selectedBtnIndex];
+    navigate(
+      `/edit/${selectedButton.value}/${selectedButton.image}/${selectedButton.name}`,
+    );
   };
 
   return (
     <div>
       {btnContextData.map((button, index) => (
-        <CustomButton
+        <Custombutton
           key={index}
           buttonInfo={button}
           onClick={() => handleButtonClick(index)}
@@ -83,7 +86,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
         <YesNoModal
           isOpen={isModalOpen}
           onClose={handleModalClose}
-          onConfirm={() => handleModalConfirm(selectedBtn)}
+          onConfirm={handleModalConfirm}
         />
       )}
     </div>
