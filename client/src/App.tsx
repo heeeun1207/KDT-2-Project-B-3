@@ -42,6 +42,8 @@ const App = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<ProtoTestPage />} />
           <Route path="/main" element={<Mainpage />} />
+          {/* <Route path="/test" element={<TestPage />} /> */}
+          <Route path="/check" element={<CurrentLocationViewPage />} />
           <Route path="/custom" element={<Custompage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* <Route path="/signUp" element={<SignUpPage />} /> */}

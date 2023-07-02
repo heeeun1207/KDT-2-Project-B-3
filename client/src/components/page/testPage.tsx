@@ -34,6 +34,40 @@ import React, { useEffect } from 'react';
 //     };
 //   }
 // }
+// declare global {
+//   interface Window {
+//     Tmapv2: {
+//       extension: any;
+//       Polyline: any;
+//       Size: any;
+//       Map: new (
+//         arg0: string,
+//         arg1: { center: any; width: string; height: string; zoom: number },
+//       ) => {
+//         setCenter: (arg0: any) => void;
+//         setZoom: (arg0: number) => void;
+//       };
+//       LatLng: new (arg0: number, arg1: number) => any;
+//       Marker: new (arg0: {
+//         position: any;
+//         icon: any;
+//         iconSize: any;
+//         map: {
+//           setCenter: (arg0: any) => void;
+//           setZoom: (arg0: number) => void;
+//         };
+//       }) => any;
+//       InfoWindow: new (arg0: {
+//         position: any;
+//         type: number;
+//         map: {
+//           setCenter: (arg0: any) => void;
+//           setZoom: (arg0: number) => void;
+//         };
+//       }) => any;
+//     };
+//   }
+// }
 
 // const Map: React.FC = () => {
 //   let map: { setCenter: (arg0: any) => void; setZoom: (arg0: number) => void };
@@ -274,39 +308,46 @@ useEffect(() => {
   window.addEventListener('load', initTmap);
 }, []);
 
-function onComplete(this: {
-  _responseData: any;
-  onComplete: () => void;
-  onProgress: any;
-  onError: any;
-}): void {
-  console.log(this._responseData); //json으로 데이터를 받은 정보들을 콘솔창에서 확인할 수 있습니다.
+//   function onComplete(this: {
+//     _responseData: any;
+//     onComplete: () => void;
+//     onProgress: any;
+//     onError: any;
+//   }): void {
+//     console.log(this._responseData); //json으로 데이터를 받은 정보들을 콘솔창에서 확인할 수 있습니다.
 
-  //     var jsonObject = new window.Tmapv2.extension.GeoJSON();
-  //     var jsonForm = jsonObject.rpTrafficRead(this._responseData);
+//     var jsonObject = new window.Tmapv2.extension.GeoJSON();
+//     var jsonForm = jsonObject.rpTrafficRead(this._responseData);
 
-  //     //교통정보 표출시 생성되는 LineColor 입니다.
-  //     var trafficColors = {
-  //       // 사용자가 임의로 색상을 설정할 수 있습니다.
-  //       // 교통정보 옵션 - 라인색상
-  //       trafficDefaultColor: '#000000', //교통 정보가 없을 때
-  //       trafficType1Color: '#009900', //원할
-  //       trafficType2Color: '#7A8E0A', //서행
-  //       trafficType3Color: '#8E8111', //정체
-  //       trafficType4Color: '#FF0000', //정체
-  //     };
-  //     jsonObject.drawRouteByTraffic(map, jsonForm, trafficColors);
-  //     if (navigator.geolocation) {
-  //       navigator.geolocation.getCurrentPosition(function (position) {
-  //         let lat = position.coords.latitude;
-  //         let lon = position.coords.longitude;
-  //         map.setCenter(new window.Tmapv2.LatLng(lat, lon));
-  //       }, onError); // onError 함수 추가
-  //     }
+//     //교통정보 표출시 생성되는 LineColor 입니다.
+//     var trafficColors = {
+//       // 사용자가 임의로 색상을 설정할 수 있습니다.
+//       // 교통정보 옵션 - 라인색상
+//       trafficDefaultColor: '#000000', //교통 정보가 없을 때
+//       trafficType1Color: '#009900', //원할
+//       trafficType2Color: '#7A8E0A', //서행
+//       trafficType3Color: '#8E8111', //정체
+//       trafficType4Color: '#FF0000', //정체
+//     };
+//     jsonObject.drawRouteByTraffic(map, jsonForm, trafficColors);
+//     if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition(function (position) {
+//         let lat = position.coords.latitude;
+//         let lon = position.coords.longitude;
+//         map.setCenter(new window.Tmapv2.LatLng(lat, lon));
+//       }, onError); // onError 함수 추가
+//     }
 
   map.setZoom(18);
 }
 
+//   return (
+//     <div>
+//       <div id="map_div"></div>
+//       <button onClick={getRP}>경로실행</button>
+//     </div>
+//   );
+// };
 //   return (
 //     <div>
 //       <div id="map_div"></div>
