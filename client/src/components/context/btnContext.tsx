@@ -31,7 +31,10 @@ const DefaultBtnContextData: Button[] = [
   },
 ];
   // 컨텍스트 API 생성
-const DefaultBtnContext = createContext<Button[]>(DefaultBtnContextData);
+  const DefaultBtnContext = createContext<{ btnContextData: Button[]; updateBtnContext: (updatedData: Button[]) => void }>({
+    btnContextData: DefaultBtnContextData,
+    updateBtnContext: () => {},
+  });
 
 // ! 모든 버튼 데이터
 // 컨텍스트에 사용 할 데이터
@@ -65,17 +68,15 @@ interface DefaultBtnContextProviderProps {
   children: ReactNode;
 }
 
-// 버튼 컨텍스트 프로바이더
-export const DefaultBtnContextProvider : React.FC<DefaultBtnContextProviderProps> = ({ children  } : DefaultBtnContextProviderProps) => {
-  const [btnContextData, setBtnContextData] = useState(DefaultBtnContextData);
+export const DefaultBtnContextProvider: React.FC<DefaultBtnContextProviderProps> = ({ children }: DefaultBtnContextProviderProps) => {
+  const [btnContextData, setBtnContextData] = useState<Button[]>(DefaultBtnContextData);
 
-  // 버튼 컨텍스트 업데이트 함수
-  const updateBtnContext = (updatedData : any) => {
+  const updateBtnContext = (updatedData: Button[]) => {
     setBtnContextData(updatedData);
   };
 
   return (
-    <DefaultBtnContext.Provider value={btnContextData}>
+    <DefaultBtnContext.Provider value={{ btnContextData, updateBtnContext }}>
       {children}
     </DefaultBtnContext.Provider>
   );

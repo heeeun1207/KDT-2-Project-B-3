@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { Button, DefaultBtnContext } from '../context/btnContext';
-import '../style/mainbtn.css';
+import { DefaultBtnContext } from '../context/btnContext';
+
 const MainBtn = (): JSX.Element => {
-  const btnContextData = useContext<Button[]>(DefaultBtnContext);
+  const { btnContextData } = useContext(DefaultBtnContext);
 
   return (
     <div>
@@ -19,9 +19,5 @@ const MainBtn = (): JSX.Element => {
     </div>
   );
 };
+
 export default MainBtn;
-
-
-
-
-

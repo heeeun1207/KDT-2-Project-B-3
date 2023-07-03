@@ -2,12 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import EditButton from '../common/editButtonSelect';
 import { DefaultBtnContext } from "../context/btnContext";
-// 디폴트 버튼 인터페이스
-interface Button {
-  value: string;
-  image: string;
-  name: string;
-}
+
 // url로 가져온 데이터 인터페이스
 interface ButtonParams {
   value: string;
@@ -19,11 +14,12 @@ interface ButtonParams {
 export const EditButtonPage: React.FC = () => {
   const navigate = useNavigate();
   // 기본 버튼 useContext
-  const btnContextData :  Button[]= useContext(DefaultBtnContext);
+  const { btnContextData, updateBtnContext } = useContext(DefaultBtnContext);
+
   // 컨텍스트 데이터 상태 관리
   const [contextState, setContextState] = useState(btnContextData)
   // 버튼 상태
-  const [btnState, setBtnState]= useState(btnContextData);
+  // const [btnState, setBtnState]= useState(btnContextData);
   // 버튼 상태 관리
   const [selectedButton, setSelectedButton] = useState<number>(-1);
   // url 쿼리 데이터 가져오기
@@ -62,9 +58,11 @@ export const EditButtonPage: React.FC = () => {
         return button;
       });
       alert("적용이 완료됐습니다.");
+      updateBtnContext(updatedBtnContextData);
+      // setContextState(updatedBtnContextData);
       navigate('/main');
       
-      setContextState(updatedBtnContextData);
+    
       
       // 변경후에 main페이지로 이동
       
