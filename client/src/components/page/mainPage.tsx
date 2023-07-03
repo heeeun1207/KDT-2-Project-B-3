@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import MyInfo from '../common/myInfo';
 import Search from '../common/Search';
-import Gas_stationbutton from '../services/Gas_stationbutton';
-import Listdiv from '../services/Listdiv';
-import Local_convenience from '../services/Local_convenience';
-import Restroombutton from '../services/Restroombutton';
+// import Listdiv from '../services/Listdiv';
+import MainBtn from '../common/mainbtn';
 const Mainpage = (): JSX.Element => {
   const handleSearch = (searchTerm: string) => {
     // Handle the search logic here
@@ -18,23 +16,14 @@ const Mainpage = (): JSX.Element => {
     <div>
       <Search onSearch={handleSearch} />
       <div>
-        <Restroombutton />
+        <MainBtn />
       </div>
+
       <div>
-        <Gas_stationbutton />
-      </div>
-      <div>
-        <Local_convenience />
-      </div>
-      <div>
-        <Listdiv />
-      </div>
-      <div>
-      <div onClick={toggleMenu}>햄버거 메뉴</div>
-      {isOpen && <MyInfo />}
+        <div onClick={toggleMenu}>햄버거 메뉴</div>
+        {isOpen && <MyInfo />}
       </div>
     </div>
   );
 };
-
 export default Mainpage;
