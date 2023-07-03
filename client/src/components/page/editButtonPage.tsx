@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 // import EditButton from '../common/editButtonSelect';
-import { DefaultBtnData } from '../context/btnContext';
+import { DefaultBtnData } from "../context/btnContext";
 // 디폴트 버튼 인터페이스
 interface Button {
   value: string;
@@ -18,9 +18,9 @@ interface ButtonParams {
 
 const EditButtonPage: React.FC = () => {
   // useContext
-  const btnContextData: Button[] = useContext(DefaultBtnData);
+  const btnContextData :  Button[]= useContext(DefaultBtnData);
   // 컨텍스트 데이터 관리
-  const [btnState, setBtnState] = useState(btnContextData);
+  const [btnState, setBtnState]= useState(btnContextData);
   // url 쿼리 데이터
   const { value, image, name } = useParams<ButtonParams>();
   const [selectedButton, setSelectedButton] = useState<number>(-1);
@@ -40,11 +40,11 @@ const EditButtonPage: React.FC = () => {
   };
   // 변경사항 확인하기 위한 콘솔
   useEffect(() => {
-    console.log('제발 변해라:', btnContextData);
+    console.log("제발 변해라:", btnContextData);
   }, [btnContextData]);
   const handleConfirm = () => {
     if (selectedButton !== -1) {
-      console.log('눌리긴 함?');
+      console.log("눌리긴 함?")
       const updatedBtnContextData = btnContextData.map((button, index) => {
         if (index === selectedButton) {
           // 선택한 버튼의 정보로 업데이트
@@ -56,37 +56,35 @@ const EditButtonPage: React.FC = () => {
         }
         return button;
       });
-      setBtnState(updatedBtnContextData);
+      setBtnState(updatedBtnContextData)
     }
   };
 
   return (
     <div>
-      <p>
-        <strong>어떤 버튼에 적용하겠습니까?</strong>
-      </p>
+    <p><strong>어떤 버튼에 적용하겠습니까?</strong></p>
 
-      <div
-        onClick={() => handleButtonSelect(0)}
-        style={{ backgroundColor: selectedButton === 0 ? 'navy' : '' }}
-      >
-        1
-      </div>
-      <div
-        onClick={() => handleButtonSelect(1)}
-        style={{ backgroundColor: selectedButton === 1 ? 'navy' : '' }}
-      >
-        2
-      </div>
-      <div
-        onClick={() => handleButtonSelect(2)}
-        style={{ backgroundColor: selectedButton === 2 ? 'navy' : '' }}
-      >
-        3
-      </div>
-
-      <button onClick={handleConfirm}>확인</button>
+    <div
+      onClick={() => handleButtonSelect(0)}
+      style={{ backgroundColor: selectedButton === 0 ? 'navy' : '' }}
+    >
+      1
     </div>
+    <div
+      onClick={() => handleButtonSelect(1)}
+      style={{ backgroundColor: selectedButton === 1 ? 'navy' : '' }}
+    >
+      2
+    </div>
+    <div
+      onClick={() => handleButtonSelect(2)}
+      style={{ backgroundColor: selectedButton === 2 ? 'navy' : '' }}
+    >
+      3
+    </div>
+
+    <button onClick={handleConfirm}>확인</button>
+  </div>
   );
 };
 
