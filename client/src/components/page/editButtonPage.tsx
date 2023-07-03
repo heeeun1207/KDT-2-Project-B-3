@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import EditButton from '../common/editButtonSelect';
 import { DefaultBtnContext } from "../context/btnContext";
-
 // url로 가져온 데이터 인터페이스
 interface ButtonParams {
   value: string;
@@ -47,11 +46,12 @@ export const EditButtonPage: React.FC = () => {
       // btnContextData의 n번째 데이터를 url로 받은 데이터로 재할당
       const updatedBtnContextData = btnContextData.map((button, index) => {
         // 재할당 구간
-        const imageName = image.substring(image.lastIndexOf('/') + 1);
         if (index === selectedButton) {
+          //! 현재 이미지 URL을https://ko.imgbb.com/에서 생성해서 적용한 상태입니다. 리터럴로 되있는 상태인데 해결해야합니다
+          const imageUrl = "https://i.ibb.co/d6nBjHQ/cafe.png" ;
           return {
             value: value,
-            image: imageName,
+            image: imageUrl,
             name: name,
           };
         }
@@ -60,6 +60,7 @@ export const EditButtonPage: React.FC = () => {
       });
       alert("적용이 완료됐습니다.");
       updateBtnContext(updatedBtnContextData);
+      console.log("마지막 확인",updatedBtnContextData)
       // setContextState(updatedBtnContextData);
       navigate('/main');
       
