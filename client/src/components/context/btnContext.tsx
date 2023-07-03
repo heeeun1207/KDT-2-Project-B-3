@@ -60,5 +60,5 @@ const BtnContextData: Button[] = [
 // 컨텍스트 API 생성
 const BtnContext = createContext<Button[]>(BtnContextData);
 
-export { DefaultBtnData, BtnContext, BtnContextData };
+export { DefaultBtnData, BtnContext, BtnContextData, DefaultBtnContextData };
 
