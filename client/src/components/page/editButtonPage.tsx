@@ -18,19 +18,21 @@ interface ButtonParams {
 
 export const EditButtonPage: React.FC = () => {
   const navigate = useNavigate();
-  // useContext
+  // 기본 버튼 useContext
   const btnContextData :  Button[]= useContext(DefaultBtnData);
+  // 컨텍스트 데이터 상태 관리
+  const [contextState, setContextState] = useState(btnContextData)
   // 버튼 상태
   const [btnState, setBtnState]= useState(btnContextData);
-  // url 쿼리 데이터
-  const { value, image, name } = useParams<ButtonParams>();
+  // 버튼 상태 관리
   const [selectedButton, setSelectedButton] = useState<number>(-1);
-  const [contextState, setContextState] = useState(btnContextData)
+  // url 쿼리 데이터 가져오기
+  const { value, image, name } = useParams<ButtonParams>();
+
   if (!value || !image || !name) {
     // URL 파라미터가 없는 경우 처리
     return <div>URL 파라미터가 존재하지 않습니다.</div>;
   }
-
   console.log('Value:', value);
   console.log('Image:', image);
   console.log('Name:', name);
@@ -46,10 +48,10 @@ export const EditButtonPage: React.FC = () => {
   
   const handleConfirm = () => {
     if (selectedButton !== -1) {
-      console.log("눌리긴 함?")
+      // btnContextData의 n번째 데이터를 url로 받은 데이터로 재할당
       const updatedBtnContextData = btnContextData.map((button, index) => {
+        // 재할당 구간
         if (index === selectedButton) {
-          // 선택한 버튼의 정보로 업데이트
           return {
             value: value,
             image: image,
@@ -59,10 +61,10 @@ export const EditButtonPage: React.FC = () => {
         console.log("제발",button)
         return button;
       });
-      setContextState(updatedBtnContextData)
-      alert("적용이 완료됐습니다.")
+      setContextState(updatedBtnContextData);
+      alert("적용이 완료됐습니다.");
       // 변경후에 main페이지로 이동
-      navigate('/main')
+      navigate('/main');
     }
   };
 
