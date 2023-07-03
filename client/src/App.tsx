@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { BtnContext, BtnContextData, DefaultBtnContextData, DefaultBtnData } from './components/context/btnContext';
+import { BtnContext, BtnContextData, DefaultBtnContext, DefaultBtnContextData } from './components/context/btnContext';
 import Header from './components/layout/header';
 import Custompage from './components/page/custompage';
 import EditButtonPage from './components/page/editButtonPage';
@@ -38,7 +38,7 @@ const App = (): JSX.Element => {
   return (
     <div>
       <Header title={pageTitle} />
-      <DefaultBtnData.Provider value={DefaultBtnContextData}>
+      <DefaultBtnContext.Provider value={DefaultBtnContextData}>
       <BtnContext.Provider value={BtnContextData}>
         <Routes>
           <Route path="/" element={<ProtoTestPage />} />
@@ -51,7 +51,7 @@ const App = (): JSX.Element => {
           <Route path="/edit/:value/:image/:name" element={<EditButtonPage />} />
         </Routes>
       </BtnContext.Provider>
-      </DefaultBtnData.Provider>
+      </DefaultBtnContext.Provider>
     </div>
   );
 };
