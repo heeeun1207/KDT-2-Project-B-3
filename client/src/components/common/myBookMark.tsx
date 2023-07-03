@@ -1,17 +1,19 @@
 import React from "react";
+import '../style/OpenMenu.css';
 
 const myBookMark = ():JSX.Element =>{
   return (
-    <div>
+    <div className="myBookMark">
 
-    <div>
-      마이로그
-      <div><img src="" alt="북마크 표시" /></div>
+    <div className="btnContainer">
+      <strong>마이로그</strong>
+      <img className="myLogBtn"
+       alt="북마크 표시" />
     </div>
 
-    <div>
+    <div className="btnContainer">
       즐겨찾기
-      <div><img src="" alt="북마크 표시" /></div>
+      <img className="starBtn" alt="즐겨찾기 표시" />
     </div>
     
     </div>
