@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import EditButton from '../common/editButtonSelect';
 import { DefaultBtnData } from "../context/btnContext";
 // 디폴트 버튼 인터페이스
@@ -17,6 +17,7 @@ interface ButtonParams {
 }
 
 export const EditButtonPage: React.FC = () => {
+  const navigate = useNavigate();
   // useContext
   const btnContextData :  Button[]= useContext(DefaultBtnData);
   // 버튼 상태
@@ -59,6 +60,9 @@ export const EditButtonPage: React.FC = () => {
         return button;
       });
       setContextState(updatedBtnContextData)
+      alert("적용이 완료됐습니다.")
+      // 변경후에 main페이지로 이동
+      navigate('/main')
     }
   };
 
