@@ -8,8 +8,7 @@ import LoginPage from './components/page/loginPage';
 import Mainpage from './components/page/mainPage';
 // import TestPage from './components/page/testPage';
 import ProtoTestPage from './components/page/testPageHer';
-import CurrentLocationViewPage from './components/page/userCurrentLocationViewPage';
-
+import MapPage from './components/page/mapPage';
 const App = (): JSX.Element => {
   console.log(BtnContextData);
   const location = useLocation();
@@ -38,18 +37,14 @@ const App = (): JSX.Element => {
   return (
     <div>
       <Header title={pageTitle} />
-      <BtnContext.Provider value={BtnContextData}>
-        <Routes>
-          <Route path="/" element={<ProtoTestPage />} />
-          <Route path="/main" element={<Mainpage />} />
-          {/* <Route path="/test" element={<TestPage />} /> */}
-          <Route path="/check" element={<CurrentLocationViewPage />} />
-          <Route path="/custom" element={<Custompage />} />
-          <Route path="/login" element={<LoginPage />} />
-          {/* <Route path="/signUp" element={<SignUpPage />} /> */}
-          <Route path="/edit/:value/:image/:name" element={<EditButtonPage />} />
-        </Routes>
-      </BtnContext.Provider>
+      <Routes>
+        <Route path="/" element={<ProtoTestPage />} />
+        <Route path="/main" element={<Mainpage />} />
+        <Route path="/map" element={<MapPage />} />
+        <Route path="/custom" element={<Custompage />} />
+        <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/signUp" element={<SignUpPage />} /> */}
+      </Routes>
     </div>
   );
 };
