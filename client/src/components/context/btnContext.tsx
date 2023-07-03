@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import React, { createContext, ReactNode, useState } from 'react';
 //src 안으로 images 폴더 넣었습니다.
 import cafeImage from '../images/cafe.png';
 import convenienceStoreImage from '../images/convenience-store.png';
@@ -60,5 +60,25 @@ const BtnContextData: Button[] = [
 // 컨텍스트 API 생성
 const BtnContext = createContext<Button[]>(BtnContextData);
 
+// 프로바이더 함수 인터페이스
+interface DefaultBtnContextProviderProps {
+  children: ReactNode;
+}
+
+// 버튼 컨텍스트 프로바이더
+export const DefaultBtnContextProvider : React.FC<DefaultBtnContextProviderProps> = ({ children  } : DefaultBtnContextProviderProps) => {
+  const [btnContextData, setBtnContextData] = useState(DefaultBtnContextData);
+
+  // 버튼 컨텍스트 업데이트 함수
+  const updateBtnContext = (updatedData : any) => {
+    setBtnContextData(updatedData);
+  };
+
+  return (
+    <DefaultBtnContext.Provider value={btnContextData}>
+      {children}
+    </DefaultBtnContext.Provider>
+  );
+};
 export { DefaultBtnContext, BtnContext, BtnContextData, DefaultBtnContextData };
 

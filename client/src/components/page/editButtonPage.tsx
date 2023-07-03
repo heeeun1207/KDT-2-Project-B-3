@@ -61,10 +61,13 @@ export const EditButtonPage: React.FC = () => {
         console.log("제발",button)
         return button;
       });
-      setContextState(updatedBtnContextData);
       alert("적용이 완료됐습니다.");
-      // 변경후에 main페이지로 이동
       navigate('/main');
+      updatedBtnContextData(updatedBtnContextData)
+      setContextState(updatedBtnContextData);
+      
+      // 변경후에 main페이지로 이동
+      
     }
   };
 
