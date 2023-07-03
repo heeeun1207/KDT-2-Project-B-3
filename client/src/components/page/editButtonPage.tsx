@@ -63,7 +63,7 @@ export const EditButtonPage: React.FC = () => {
       });
       alert("적용이 완료됐습니다.");
       navigate('/main');
-      updatedBtnContextData(updatedBtnContextData)
+      
       setContextState(updatedBtnContextData);
       
       // 변경후에 main페이지로 이동
