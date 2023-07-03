@@ -1,7 +1,15 @@
 
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .searchBar{
     width: 273px;
     height: 53px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,13 +18,15 @@
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
     padding: 10px;
   font-size: 16px;
-  position: relative;
 }
 
 .searchButton{
-  width: 48px;
-  height: 48px;
+  width: 53px;
+  height: 71px;
+  border-radius: 10px;
   border: none;
+  background-color: #ffffff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   background: none;
   background-image: url("../images/Search.png");
   display: flex;
@@ -28,17 +38,15 @@
 .hamburgerMenu{
   width: 53px;
   height: 71px;
+  border-radius: 10px;
   border: none;
+  background-color: #ffffff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   background: none;
   background-image: url("../images/hamburger.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-color: gray;
   background-size: cover;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
   cursor: pointer;
 }
 

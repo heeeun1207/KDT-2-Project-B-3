@@ -1,7 +1,7 @@
 import React from "react";
 import Info from '../common/myInfo';
 import Book from '../common/myBookMark';
-import './OpenMenu.module.css';
+//import './OpenMenu.module.css';
 
 const OpenMenuPage = ():JSX.Element =>{
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Listdiv from '../services/Listdiv';
-import '../style/Header.module.css';
+import '../style/Header.css';
 
 interface SearchProps {
   onSearch: (searchTerm: string) => void;
@@ -21,7 +21,7 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
 
   return (
     <div>
-      <div>
+      <div className='container'>
         <input className='searchBar'
           type="text"
           placeholder="Search..."
@@ -29,9 +29,10 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
           onChange={handleInputChange}
         />
         <button className='searchButton' onClick={handleSearch}></button>
+        <div className='hamburgerMenu'></div>
+        {showList.length > 0 && <Listdiv />}
       </div>
-      <div className='hamburgerMenu'></div>
-      {showList.length > 0 && <Listdiv />}
+          {/* {showList.length > 0 && <Listdiv />} */}
     </div>
   );
 };

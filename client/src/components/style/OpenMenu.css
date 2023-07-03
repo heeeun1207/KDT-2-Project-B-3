@@ -12,8 +12,8 @@
 .header{
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: space-around;
+  justify-content:space-between;
+  align-items: center;
 }
 
 /*알람벨 버튼*/
@@ -36,10 +36,13 @@
   height: 203px;
   border-radius: 10px;
   border-color: none;
+  background-color: #ffffff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content:center;
+  align-items:flex-start;
 }
 
 /*마이로그 즐겨찾기 컨테이너*/
@@ -48,9 +51,18 @@
   height: 167px;
   border-radius: 10px;
   border-color: none;
+  background-color: #ffffff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: row;
   justify-content:flex-start;
+}
+
+/*버튼 컨테이너(즐겨찾기+즐겨찾기 버튼)*/
+.btnContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -86,15 +98,18 @@
 .setting{
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-evenly;
+  justify-content:flex-start;
 }
 
 /*설정버튼*/
 .settingBtn{
   width: 33px;
   height: 35px;
+  border-radius: 10px;
+  border-color: none;
+  background-color: #ffffff;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  background: none;
+  cursor: pointer;
   background-image: url("../images/setting.png");
 }
 
