@@ -1,22 +1,19 @@
 import React, { useContext } from 'react';
-import { DefaultBtnData, Button } from '../context/btnContext';
+import { DefaultBtnContext } from '../context/btnContext';
 import '../style/mainbtn.css';
-
 const MainBtn = (): JSX.Element => {
-  const contextData = useContext<Button[]>(DefaultBtnData);
+  const { btnContextData } = useContext(DefaultBtnContext);
 
   return (
     <div>
-      {Contextdata.map((data, index) => {
-        let Name = data.name;
-        // let Value = data.value;
-        let Image = data.image;
-
+      {btnContextData.map((data, index) => {
+        const { name, image } = data;
+        console.log("이게 이미지 이름입니다",image )
         return (
           <div key={index}>
-            <button className="main-button">
+            <div className="main-button">
               <img src={image} alt={name} />
-            </button>
+            </div>
           </div>
         );
       })}
