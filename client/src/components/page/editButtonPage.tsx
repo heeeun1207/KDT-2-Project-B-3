@@ -47,10 +47,11 @@ export const EditButtonPage: React.FC = () => {
       // btnContextData의 n번째 데이터를 url로 받은 데이터로 재할당
       const updatedBtnContextData = btnContextData.map((button, index) => {
         // 재할당 구간
+        const imageName = image.substring(image.lastIndexOf('/') + 1);
         if (index === selectedButton) {
           return {
             value: value,
-            image: image,
+            image: imageName,
             name: name,
           };
         }

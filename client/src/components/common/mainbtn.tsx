@@ -8,11 +8,12 @@ const MainBtn = (): JSX.Element => {
     <div>
       {btnContextData.map((data, index) => {
         const { name, image } = data;
+        console.log("이게 이미지 이름입니다",image )
         return (
           <div key={index}>
-            <button>
+            <div>
               <img src={image} alt={name} />
-            </button>
+            </div>
           </div>
         );
       })}
