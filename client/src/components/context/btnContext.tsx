@@ -31,7 +31,7 @@ const DefaultBtnContextData: Button[] = [
   },
 ];
   // 컨텍스트 API 생성
-const DefaultBtnData = createContext<Button[]>(DefaultBtnContextData);
+const DefaultBtnContext = createContext<Button[]>(DefaultBtnContextData);
 
 // ! 모든 버튼 데이터
 // 컨텍스트에 사용 할 데이터
@@ -60,5 +60,5 @@ const BtnContextData: Button[] = [
 // 컨텍스트 API 생성
 const BtnContext = createContext<Button[]>(BtnContextData);
 
-export { DefaultBtnData, BtnContext, BtnContextData, DefaultBtnContextData };
+export { DefaultBtnContext, BtnContext, BtnContextData, DefaultBtnContextData };
 
