@@ -1,24 +1,3 @@
-/* 전체 사이즈  */
-body{
-  width: 100vW;
-  height: 100vh;
-}
-
-.custompage-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
 .button {
   display: flex;
   align-items: center;
@@ -27,9 +6,6 @@ body{
   height: 80px;
   background-color: #ffffff;
   cursor: pointer;
-  margin-left: 25px;
-  margin-bottom: 25px;
-  margin-top: 25px;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
