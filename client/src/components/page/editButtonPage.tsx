@@ -54,7 +54,7 @@ const EditButtonPage: React.FC = () => {
       // updateBtnContext 메서드로 provider 데이터 업데이트
       updateBtnContext(updatedBtnContextData);
       // 변경후에 main페이지로 이동
-      navigate('/main');
+      navigate('/');
     }
   };
 
