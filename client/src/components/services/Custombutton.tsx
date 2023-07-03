@@ -12,7 +12,7 @@ interface CustomButtonProps {
 
 const CustomButton: React.FC<CustomButtonProps> = ({ buttonInfo, onClick }) => {
   const { image } = buttonInfo;
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   const handleButtonClick = () => {
     setIsActive(!isActive);

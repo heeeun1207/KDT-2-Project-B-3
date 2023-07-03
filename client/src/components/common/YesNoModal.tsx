@@ -15,14 +15,15 @@ const YesNoModal: React.FC<ConfirmationModalProps> = ({
   return (
     <div className={`modal ${isOpen ? 'open' : ''}`}>
       <div className="modal-content">
-        {/* <h2>Confirmation Modal</h2> */}
-        <p>정말 적용하시겠습니까?</p>
-        <button className="custom-button" onClick={onConfirm}>
-          예
-        </button>
-        <button className="custom-button" onClick={onClose}>
-          아니오
-        </button>
+        <p className="modal-text">정말 적용하시겠습니까?</p>
+        <div className="button-container">
+          <button className="custom-button" onClick={onConfirm}>
+            예
+          </button>
+          <button className="custom-button" onClick={onClose}>
+            아니오
+          </button>
+        </div>
       </div>
     </div>
   );
