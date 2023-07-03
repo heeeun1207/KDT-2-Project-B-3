@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style/modalbtn.css';
 
 interface ConfirmationModalProps {
   isOpen: boolean;
@@ -14,10 +15,15 @@ const YesNoModal: React.FC<ConfirmationModalProps> = ({
   return (
     <div className={`modal ${isOpen ? 'open' : ''}`}>
       <div className="modal-content">
-        <h2>Confirmation Modal</h2>
-        <p>이 버튼을 편집하겠습니까?</p>
-        <button onClick={onConfirm}>예</button>
-        <button onClick={onClose}>아니오</button>
+        <p className="modal-text">정말 적용하시겠습니까?</p>
+        <div className="button-container">
+          <button className="custom-button" onClick={onConfirm}>
+            예
+          </button>
+          <button className="custom-button" onClick={onClose}>
+            아니오
+          </button>
+        </div>
       </div>
     </div>
   );

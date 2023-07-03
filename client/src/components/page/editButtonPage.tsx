@@ -8,6 +8,7 @@ interface Button {
   image: string;
   name: string;
 }
+
 // url로 가져온 데이터 인터페이스
 interface ButtonParams {
   value: string;
@@ -38,10 +39,12 @@ const EditButtonPage: React.FC = () => {
     // 1, 2, 3번 state
     setSelectedButton(buttonIndex);
   };
+
   // 변경사항 확인하기 위한 콘솔
   useEffect(() => {
     console.log("제발 변해라:", btnContextData);
   }, [btnContextData]);
+
   const handleConfirm = () => {
     if (selectedButton !== -1) {
       console.log("눌리긴 함?")
@@ -59,6 +62,10 @@ const EditButtonPage: React.FC = () => {
       setBtnState(updatedBtnContextData)
     }
   };
+
+  useEffect(() => {
+    setSelectedButton(0); // 첫 로딩시 0번 버튼에 CSS 적용
+  }, []);
 
   return (
     <div>

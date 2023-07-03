@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import '../style/custombtn.css';
 
 interface ButtonInfo {
-  value: string;
   image: string;
-  name: string;
 }
 
 interface CustomButtonProps {
@@ -12,12 +11,20 @@ interface CustomButtonProps {
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({ buttonInfo, onClick }) => {
-  const { value, image, name } = buttonInfo;
+  const { image } = buttonInfo;
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  const handleButtonClick = () => {
+    setIsActive(!isActive);
+    onClick();
+  };
 
   return (
-    <div onClick={onClick}>
-      <img src={image} alt={name} />
-      {value}
+    <div
+      className={`button ${isActive ? 'active' : ''}`}
+      onClick={handleButtonClick}
+    >
+      <img src={image} />
     </div>
   );
 };

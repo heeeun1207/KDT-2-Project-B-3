@@ -39,15 +39,17 @@ const App = (): JSX.Element => {
   return (
     <div>
       <Header title={pageTitle} />
-      <Routes>
-        <Route path="/" element={<ProtoTestPage />} />
-        <Route path="/main" element={<Mainpage />} />
-        <Route path="/map" element={<MapPage />} />
-        <Route path="/custom" element={<Custompage />} />
+      <BtnContext.Provider value={BtnContextData}>
+        <Routes>
+          <Route path="/" element={<ProtoTestPage />} />
+          <Route path="/main" element={<Mainpage />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/custom" element={<Custompage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/open" element={<OpenMenuPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/signUp" element={<SignUpPage />} /> */}
-      </Routes>
+          <Route path="/edit/:value/:image/:name" element={<EditButtonPage />} />
+        </Routes>
+      </BtnContext.Provider>
     </div>
   );
 };
