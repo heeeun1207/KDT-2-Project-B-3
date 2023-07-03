@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DefaultBtnData, Button } from '../context/btnContext';
+import { Button, DefaultBtnData } from '../context/btnContext';
 
 const MainBtn = (): JSX.Element => {
   const Contextdata = useContext<Button[]>(DefaultBtnData);
@@ -7,9 +7,9 @@ const MainBtn = (): JSX.Element => {
   return (
     <div>
       {Contextdata.map((data, index) => {
-        let Name = data.name;
+        const Name = data.name;
         // let Value = data.value;
-        let Image = data.image;
+        const Image = data.image;
 
         return (
           <div key={index}>
