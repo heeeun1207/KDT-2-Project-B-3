@@ -6,7 +6,7 @@ const myBookMark = ():JSX.Element =>{
     <div className="myBookMark">
 
     <div className="btnContainer">
-      마이로그
+      <strong>마이로그</strong>
       <img className="myLogBtn"
        alt="북마크 표시" />
     </div>
