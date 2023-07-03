@@ -64,6 +64,7 @@ const Map: React.FC = () => {
         let s_latlng = new window.Tmapv2.LatLng(lat, lon);
         //? 도착지 설정되면 좌표값으로 들어갈 곳
         let e_latlng = new window.Tmapv2.LatLng(36.345698, 127.373761);
+        let marker_s;
 
         let optionObj = {
           reqCoordType: 'WGS84GEO', //요청 좌표계 옵셥 설정입니다.
@@ -82,7 +83,12 @@ const Map: React.FC = () => {
         // TData 객체의 경로요청 함수
         tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
         setInterval(function () {
-          
+          marker_s = new window.Tmapv2.Marker({
+            position: new window.Tmapv2.LatLng(lat, lon),
+            icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
+            iconSize: new window.Tmapv2.Size(20, 20),
+            map: map,
+          })
         }, 3000);
       });
     }
@@ -132,7 +138,7 @@ const Map: React.FC = () => {
   return (
     <div>
       <div id="map_div"></div>
-      {/* //? 경로안내로 버튼 바꿔야함 */}
+      {/* //? 경로안내로 버튼 */}
       <button onClick={getRP}>경로실행</button>
     </div>
   );
