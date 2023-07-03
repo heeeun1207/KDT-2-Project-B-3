@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import YesNoModal from '../common/YesNoModal';
+import { BtnContext } from '../context/btnContext';
 import Custombutton from './Custombutton';
 
 interface ButtonListProps {
@@ -13,60 +16,79 @@ interface Button {
 
 const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   const [buttons, setButtons] = useState<Button[]>([]);
+  const [selectedBtnIndex, setSelectedBtnIndex] = useState<number>(-1);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const btnContextData = useContext(BtnContext);
 
   useEffect(() => {
-    // 가상으로 가져온 버튼 데이터
     const virtualButtons: Button[] = [
       {
         value: '편의점',
-        image: 'convenience-store.jpg',
+        image: 'convenience-store.png',
         name: '편의점',
       },
       {
         value: '카페',
-        image: 'cafe.jpg',
+        image: 'cafe.png',
         name: '카페',
       },
       {
         value: '주유소',
-        image: 'gas-station.jpg',
+        image: 'gas_station.png',
         name: '주유소',
       },
       {
         value: '화장실',
-        image: 'restroom.jpg',
+        image: 'restroom.png',
         name: '화장실',
       },
     ];
 
-    // 추가 버튼
     const additionalButton: Button = {
       value: '추가 버튼',
       image: 'additional-button.jpg',
       name: '추가 버튼',
     };
 
-    // 가상 데이터에 추가 버튼을 포함하여 상태에 설정
     setButtons([...virtualButtons, additionalButton]);
   }, []);
 
-  const filteredButtons = buttons.filter((button) =>
-    button.name.includes(searchTerm),
-  );
+  const handleButtonClick = (buttonIndex: number) => {
+    console.log('Button clicked:', buttons[buttonIndex]);
+    setSelectedBtnIndex(buttonIndex);
+    setIsModalOpen(true);
+  };
 
-  const handleButtonClick = (buttonName: string) => {
-    console.log('Button clicked:', buttonName);
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleModalConfirm = () => {
+    console.log('Confirmed:', buttons[selectedBtnIndex]);
+    setIsModalOpen(false);
+    const selectedButton = buttons[selectedBtnIndex];
+    navigate(
+      `/edit/${selectedButton.value}/${selectedButton.image}/${selectedButton.name}`,
+    );
   };
 
   return (
     <div>
-      {filteredButtons.map((button, index) => (
+      {btnContextData.map((button, index) => (
         <Custombutton
           key={index}
           buttonInfo={button}
-          onClick={() => handleButtonClick(button.name)}
+          onClick={() => handleButtonClick(index)}
         />
       ))}
+      {isModalOpen && (
+        <YesNoModal
+          isOpen={isModalOpen}
+          onClose={handleModalClose}
+          onConfirm={handleModalConfirm}
+        />
+      )}
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "../common/button";
+import GetMyLocation from "../services/getMyLocation";
 const ProtoTestPage = ():JSX.Element=> {
   return <div>
-    <p>대머리</p>
+    <GetMyLocation/>
     <Button/>
   </div>
 };

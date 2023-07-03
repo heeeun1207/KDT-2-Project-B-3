@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Gas_stationbutton = (): JSX.Element => {
+const gasStationbutton = (): JSX.Element => {
   function testEvent() {
     fetch('/test2').then((data) => {
       console.log(data.json());
@@ -34,4 +34,4 @@ const Gas_stationbutton = (): JSX.Element => {
   );
 };
 
-export default Gas_stationbutton;
+export default gasStationbutton;
