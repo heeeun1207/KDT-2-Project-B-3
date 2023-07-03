@@ -15,10 +15,13 @@ interface Button {
 }
 
 const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
+  // 버튼 상태
   const [buttons, setButtons] = useState<Button[]>([]);
   const [selectedBtnIndex, setSelectedBtnIndex] = useState<number>(-1);
+  // yes, no 모달 토글
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
+  // 모든 버튼 데이터를 가져옴
   const btnContextData = useContext(BtnContext);
 
   useEffect(() => {
@@ -53,17 +56,17 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
 
     setButtons([...virtualButtons, additionalButton]);
   }, []);
-
+// 토글 이벤트
   const handleButtonClick = (buttonIndex: number) => {
     console.log('Button clicked:', buttons[buttonIndex]);
     setSelectedBtnIndex(buttonIndex);
     setIsModalOpen(true);
   };
-
+// 토글 닫기
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
-
+// 토글 -> url 쿼리에 데이터 담고 페이지 이동
   const handleModalConfirm = () => {
     console.log('Confirmed:', buttons[selectedBtnIndex]);
     setIsModalOpen(false);
