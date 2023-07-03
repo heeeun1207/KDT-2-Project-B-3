@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import EditButton from '../common/editButtonSelect';
-import { DefaultBtnData } from "../context/btnContext";
+import { DefaultBtnContext } from "../context/btnContext";
 // 디폴트 버튼 인터페이스
 interface Button {
   value: string;
@@ -19,7 +19,7 @@ interface ButtonParams {
 export const EditButtonPage: React.FC = () => {
   const navigate = useNavigate();
   // 기본 버튼 useContext
-  const btnContextData :  Button[]= useContext(DefaultBtnData);
+  const btnContextData :  Button[]= useContext(DefaultBtnContext);
   // 컨텍스트 데이터 상태 관리
   const [contextState, setContextState] = useState(btnContextData)
   // 버튼 상태
