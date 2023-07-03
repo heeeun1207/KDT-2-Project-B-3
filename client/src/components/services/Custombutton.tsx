@@ -1,9 +1,7 @@
 import React from 'react';
-
+import '../style/custombtn.css';
 interface ButtonInfo {
-  value: string;
   image: string;
-  name: string;
 }
 
 interface CustomButtonProps {
@@ -12,12 +10,14 @@ interface CustomButtonProps {
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({ buttonInfo, onClick }) => {
-  const { value, image, name } = buttonInfo;
+  const { image } = buttonInfo;
+  {
+    /* 커스텀 버튼 이미지만 보이도록 바꿨습니다. */
+  }
 
   return (
     <div className="button" onClick={onClick}>
-      <img src={image} alt={name} />
-      {value}
+      <img src={image} />
     </div>
   );
 };
