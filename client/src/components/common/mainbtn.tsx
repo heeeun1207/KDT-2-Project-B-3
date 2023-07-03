@@ -1,22 +1,19 @@
 import React, { useContext } from 'react';
 import { DefaultBtnData, Button } from '../context/btnContext';
+import '../style/mainbtn.css';
 
 const MainBtn = (): JSX.Element => {
-  const Contextdata = useContext<Button[]>(DefaultBtnData);
+  const contextData = useContext<Button[]>(DefaultBtnData);
 
   return (
     <div>
-      {Contextdata.map((data, index) => {
-        let Name = data.name;
-        // let Value = data.value;
-        let Image = data.image;
+      {contextData.map((data, index) => {
+        const { name, image } = data;
 
         return (
           <div key={index}>
             <button>
-              <img src={Image} alt={Name} />
-              {/* <span>Name: {Name}</span>
-              <span>Value: {Value}</span> */}
+              <img src={image} alt={name} />
             </button>
           </div>
         );
