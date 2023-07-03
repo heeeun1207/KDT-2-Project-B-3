@@ -571,6 +571,7 @@ import React, { useEffect, useState } from 'react';
 declare global {
   interface Window {
     Tmapv2: {
+      extension: any;
       Polyline: any;
       Size: any;
       Map: new (

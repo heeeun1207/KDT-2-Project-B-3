@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { BtnContext, BtnContextData } from './components/context/btnContext';
 import Header from './components/layout/header';
 import Custompage from './components/page/custompage';
+import OpenMenuPage from './components/page/menuListPage';
 import EditButtonPage from './components/page/editButtonPage';
 import LoginPage from './components/page/loginPage';
 import Mainpage from './components/page/mainPage';
@@ -24,6 +25,7 @@ const App = (): JSX.Element => {
     '/custom': '카테고리 선택',
     '/login': '로그인',
     '/signUp': '회원가입',
+    '/open': '햄버거 버튼 메뉴 선택'
   };
   React.useEffect(() => {
     // switch (location.pathname) {
@@ -45,6 +47,7 @@ const App = (): JSX.Element => {
           {/* <Route path="/test" element={<TestPage />} /> */}
           <Route path="/check" element={<CurrentLocationViewPage />} />
           <Route path="/custom" element={<Custompage />} />
+          <Route path="/open" element={<OpenMenuPage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* <Route path="/signUp" element={<SignUpPage />} /> */}
           <Route path="/edit/:buttonName" element={<EditButtonPage />} />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Listdiv from '../services/Listdiv';
+import '../style/Header.module.css';
 
 interface SearchProps {
   onSearch: (searchTerm: string) => void;
@@ -20,47 +21,16 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
 
   return (
     <div>
-      <div
-        style={{
-          width: '273px',
-          height: '53px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          border: 'none',
-          backgroundColor: '#ffffff',
-          boxShadow: '0 0 4px rgba(0, 0, 0, 0.5)',
-          padding: '10px',
-          fontSize: '16px',
-          position: 'relative',
-        }}
-      >
-        <input
+      <div>
+        <input className='searchBar'
           type="text"
           placeholder="Search..."
           value={searchTerm}
           onChange={handleInputChange}
         />
-        <button
-          style={{
-            width: '53px',
-            height: '71px',
-            border: 'none',
-            background: 'none',
-            backgroundImage: 'url(images/Restroombutton.png)',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: 'gray',
-            backgroundSize: 'cover',
-            position: 'absolute',
-            right: '10px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            cursor: 'pointer',
-          }}
-          onClick={handleSearch}
-        ></button>
+        <button className='searchButton' onClick={handleSearch}></button>
       </div>
+      <div className='hamburgerMenu'></div>
       {showList.length > 0 && <Listdiv />}
     </div>
   );

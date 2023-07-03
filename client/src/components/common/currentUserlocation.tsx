@@ -214,6 +214,43 @@ export default App;
 
 import React, { useEffect } from 'react';
 
+
+declare global {
+  interface Window {
+    Tmapv2: {
+      extension: any;
+      Polyline: any;
+      Size: any;
+      Map: new (
+        arg0: string,
+        arg1: { center: any; width: string; height: string; zoom: number },
+      ) => {
+        setCenter: (arg0: any) => void;
+        setZoom: (arg0: number) => void;
+      };
+      LatLng: new (arg0: number, arg1: number) => any;
+      Marker: new (arg0: {
+        position: any;
+        icon: any;
+        iconSize: any;
+        map: {
+          setCenter: (arg0: any) => void;
+          setZoom: (arg0: number) => void;
+        };
+      }) => any;
+      InfoWindow: new (arg0: {
+        position: any;
+        type: number;
+        map: {
+          setCenter: (arg0: any) => void;
+          setZoom: (arg0: number) => void;
+        };
+      }) => any;
+    };
+  }
+}
+
+/*
 declare global {
   interface Window {
     Tmapv2: {
@@ -247,6 +284,8 @@ declare global {
     };
   }
 }
+*/
+
 
 const Map: React.FC = () => {
   let map: {
