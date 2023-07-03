@@ -19,12 +19,12 @@ interface ButtonParams {
 const EditButtonPage: React.FC = () => {
   // useContext
   const btnContextData :  Button[]= useContext(DefaultBtnData);
-  // 컨텍스트 데이터 관리
+  // 버튼 상태
   const [btnState, setBtnState]= useState(btnContextData);
   // url 쿼리 데이터
   const { value, image, name } = useParams<ButtonParams>();
   const [selectedButton, setSelectedButton] = useState<number>(-1);
-
+  const [contextState, setContextState] = useState(btnContextData)
   if (!value || !image || !name) {
     // URL 파라미터가 없는 경우 처리
     return <div>URL 파라미터가 존재하지 않습니다.</div>;
@@ -40,8 +40,9 @@ const EditButtonPage: React.FC = () => {
   };
   // 변경사항 확인하기 위한 콘솔
   useEffect(() => {
-    console.log("제발 변해라:", btnContextData);
-  }, [btnContextData]);
+    console.log("안돼?", contextState);
+  }, [contextState]);
+  
   const handleConfirm = () => {
     if (selectedButton !== -1) {
       console.log("눌리긴 함?")
@@ -54,9 +55,10 @@ const EditButtonPage: React.FC = () => {
             name: name,
           };
         }
+        console.log("제발",button)
         return button;
       });
-      setBtnState(updatedBtnContextData)
+      setContextState(updatedBtnContextData)
     }
   };
 
