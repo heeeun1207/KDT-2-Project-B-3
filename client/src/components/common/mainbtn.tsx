@@ -12,7 +12,7 @@ const MainBtn = (): JSX.Element => {
 
         return (
           <div key={index}>
-            <button>
+            <button className="main-button">
               <img src={image} alt={name} />
             </button>
           </div>

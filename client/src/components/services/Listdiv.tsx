@@ -4,8 +4,8 @@ const Listdiv = (): JSX.Element => {
   const style = {
     width: '390px',
     height: '300px',
-    backgroundColor: 'gray',
-    border: '1px solid',
+    backgroundColor: 'White',
+    border: '2px solid',
   };
 
   return <div style={style}></div>;
