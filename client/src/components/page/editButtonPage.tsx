@@ -16,7 +16,7 @@ interface ButtonParams {
   [key: string]: string;
 }
 
-const EditButtonPage: React.FC = () => {
+export const EditButtonPage: React.FC = () => {
   // useContext
   const btnContextData :  Button[]= useContext(DefaultBtnData);
   // 버튼 상태
