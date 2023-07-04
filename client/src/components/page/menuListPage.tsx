@@ -1,10 +1,9 @@
 import React from "react";
 import Info from '../common/myInfo';
 import Book from '../common/myBookMark';
-//import alarm from '../images/notification.png';
+import alarm from '../images/notifications.png';
 import settingImage from '../images/setting.png';
 import '../style/OpenMenu.css';
-//import styled from "styled-components";
 
 
 ////////////////////////////////////
@@ -33,7 +32,7 @@ function OpenMenuPage(): JSX.Element {
 
       <div className="header">
         <p>Jin님, 환영합니다.</p>
-         {/* <button className="settingButton"><img className="imgSize" src={alarm} alt="" /></button>  */}
+         <button className="settingButton"><img className="imgSize" src={alarm} alt="" /></button>
       </div>
 
       <Info />
