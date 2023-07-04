@@ -23,7 +23,7 @@ const Mainpage = (): JSX.Element => {
       <Search onSearch={handleSearch} />
       <div>
         <MainBtn handleBtnClick={handleBtnClick} />
-        <MapPage />
+        <MapPage selectedBtn={selectedBtn} />
       </div>
       <div>
         <div onClick={toggleMenu}>햄버거 메뉴</div>
