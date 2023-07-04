@@ -241,10 +241,6 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
     }
   }, [selectedBtn]);
 
-  // useEffect(() => {
-  //   window.addEventListener('load', initTmap);
-  // }, []);
-
   useEffect(() => {
     // DefaultBtnContext의 값이 업데이트될 때 initTmap 함수 실행
     initTmap();
