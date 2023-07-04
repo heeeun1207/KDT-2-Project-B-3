@@ -9,7 +9,7 @@ import LoginPage from './components/page/loginPage';
 import Mainpage from './components/page/mainPage';
 // import TestPage from './components/page/testPage';
 import ProtoTestPage from './components/page/testPageHer';
-import MapPage from './components/page/mapPage';
+// import MapPage from './components/page/mapPage';
 const App = (): JSX.Element => {
   console.log(BtnContextData);
   const location = useLocation();
@@ -44,7 +44,6 @@ const App = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<ProtoTestPage />} />
           <Route path="/main" element={<Mainpage />} />
-          <Route path="/map" element={<MapPage />} />
           <Route path="/custom" element={<Custompage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/open" element={<OpenMenuPage />} />
