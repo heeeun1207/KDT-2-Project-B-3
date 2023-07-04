@@ -1,15 +1,24 @@
 /*햄버거 메뉴 전체바디*/
-.body{
-  box-sizing:border-box ;
-  z-index: auto;
-  width: 266px;
-  height: 844px;
-  margin: 15px;
-  padding: 10px;
+.menuToggle {
+  border-radius: 20px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  margin-top: 745px;
+  margin-left: 85px;
+  width: 60%;
+  height: 70%;
+  padding: 25px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
+
+.menuToggle.open {
+  right: 0;
+  transition: 0.5s ease;
+}
+
+
 /*OO님 환영합니다, 알람벨 컨테이너 부분*/
 .header{
   display: flex;
@@ -97,11 +106,10 @@
   border-radius: 10px;
   border: none;
   background-color: #ffffff;
-  /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); */
   cursor: pointer;
   position: relative;
-  top: 40px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
 }
 
 /*고객선테,로그아웃 컨테이너*/
