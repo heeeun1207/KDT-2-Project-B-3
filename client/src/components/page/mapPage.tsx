@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Button, DefaultBtnContextData } from '../context/btnContext';
+import '../style/map.css';
 
 declare global {
   interface Window {

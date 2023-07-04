@@ -19,11 +19,13 @@ const Mainpage = (): JSX.Element => {
     setIsOpen(!isOpen);
   };
   return (
-    <div>
-      <Search onSearch={handleSearch} />
-      <div>
-        <MainBtn handleBtnClick={handleBtnClick} />
-        <MapPage selectedBtn={selectedBtn} />
+    <div style={{ position: 'relative' }}>
+      <MapPage selectedBtn={selectedBtn}/>
+      <div style={{ position: 'absolute', top: 0, left: 0 }}>
+        <Search onSearch={handleSearch} />
+      </div>
+      <div style={{ position: 'absolute', top: 120, left: 10 }}>
+        <MainBtn handleBtnClick={handleBtnClick}/>
       </div>
       <div>
         <div onClick={toggleMenu}>햄버거 메뉴</div>
