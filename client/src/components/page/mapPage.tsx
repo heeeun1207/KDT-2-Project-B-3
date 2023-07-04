@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { Button, DefaultBtnContextData } from '../context/btnContext';
 
 declare global {
   interface Window {
@@ -41,8 +42,17 @@ declare global {
 }
 
 const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
+  const DefaultBtnContext = createContext<{
+    btnContextData: Button[];
+    updateBtnContext: (updatedData: Button[]) => void;
+  }>({
+    btnContextData: DefaultBtnContextData,
+    updateBtnContext: () => {},
+  });
   const [dynamicDiv, setDynamicDiv] = useState<JSX.Element | null>(null);
   const [map, setMap] = useState<any>(null);
+  const defaultBtnContext = useContext(DefaultBtnContext);
+  const { btnContextData } = defaultBtnContext;
 
   //! 페이지가 로딩이 된 후 호출하는 함수입니다.
   function initTmap() {
@@ -91,7 +101,7 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
       ),
       icon: lonlatoption.icon,
       iconSize: lonlatoption.iconSize,
-      map: map,
+      map: lonlatoption.map,
       title: lonlatoption.title, // title 속성 추가
     });
   }
@@ -158,7 +168,6 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
                   lat: item.frontLat,
                 };
                 console.log(nameAndPosition);
-                console.log("마커확인")
                 addMarker(lonlatoption); //마커를 추가하는 함수입니다.
               },
             );
@@ -180,7 +189,7 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
           alert('검색결과가 없습니다.');
         }
         map.setCenter(new window.Tmapv2.LatLng(lat, lon));
-        map.setZoom(17);
+        map.setZoom(15);
       });
     }
   }
@@ -232,9 +241,15 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
     }
   }, [selectedBtn]);
 
+  // useEffect(() => {
+  //   window.addEventListener('load', initTmap);
+  // }, []);
+
   useEffect(() => {
-    window.addEventListener('load', initTmap);
-  }, []);
+    // DefaultBtnContext의 값이 업데이트될 때 initTmap 함수 실행
+    initTmap();
+
+  }, [btnContextData]);
 
   function onComplete(this: {
     _responseData: any;
@@ -265,7 +280,6 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
         map.setCenter(new window.Tmapv2.LatLng(lat, lon));
       }, onError); // onError 함수 추가
     }
-
     map.setZoom(18);
   }
 
@@ -279,7 +293,6 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
       </div>
         {dynamicDiv}
       {/* //? 경로안내로 버튼 */}
-      <button onClick={() => searchPOI("편의점")}>검색</button>
     </div>
   );
 };
