@@ -65,24 +65,22 @@ const EditButtonPage: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{display : 'flex', flexDirection : 'row',
+    }}>
     <p><strong>어떤 버튼에 적용하겠습니까?</strong></p>
 
-    <div
+    <div className={selectedButton === 0 ? 'edit_btn selected' : 'edit_btn'}
       onClick={() => handleButtonSelect(0)}
-      style={{ backgroundColor: selectedButton === 0 ? 'navy' : '' }}
     >
       1
     </div>
-    <div
+    <div className={selectedButton === 1 ? 'edit_btn selected' : 'edit_btn'}
       onClick={() => handleButtonSelect(1)}
-      style={{ backgroundColor: selectedButton === 1 ? 'navy' : '' }}
     >
       2
     </div>
-    <div
+    <div className={selectedButton === 2 ? 'edit_btn selected' : 'edit_btn'}
       onClick={() => handleButtonSelect(2)}
-      style={{ backgroundColor: selectedButton === 2 ? 'navy' : '' }}
     >
       3
     </div>
