@@ -192,7 +192,7 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
               (item: { name: any; id: any; frontLon: any; frontLat: any }) => (
                 <div
                   key={item.id}
-                  onClick={() => positionAndInfo(item.frontLat, item.frontLon)}
+                  onClick={() => getRP(item.frontLat, item.frontLon)}
                 >
                   <span>{item.name}</span>
                 </div>
@@ -227,13 +227,14 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
 
   //! 경로 설정 함수
   function getRP(selectLat: any, selectLon: any) {
+    let marker_s;
+
     navigator.geolocation.getCurrentPosition(function (position) {
       let lat = position.coords.latitude;
       let lon = position.coords.longitude;
       let s_latlng = new window.Tmapv2.LatLng(lat, lon);
       //? 도착지 설정되면 좌표값으로 입력됨
       let e_latlng = new window.Tmapv2.LatLng(selectLat, selectLon);
-      let marker_s;
       console.log(position);
 
       let optionObj = {
@@ -252,7 +253,12 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
 
       // TData 객체의 경로요청 함수
       tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
+    });
+    navigator.geolocation.watchPosition(function (position) {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
       var name;
+
       marker_s = new window.Tmapv2.Marker({
         position: new window.Tmapv2.LatLng(lat, lon),
         icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
