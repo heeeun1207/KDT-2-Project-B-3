@@ -192,7 +192,13 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
               (item: { name: any; id: any; frontLon: any; frontLat: any }) => (
                 <div
                   key={item.id}
-                  onClick={() => getRP(item.frontLat, item.frontLon)}
+                  onClick={() => {
+                    getRP(item.frontLat, item.frontLon)
+                    setInterval(function() {
+                      console.log("하나씩");
+                      getPostion();
+                    }, 1000)
+                  }}
                 >
                   <span>{item.name}</span>
                 </div>
@@ -210,19 +216,30 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
 
   //! 현재 위치 갱신 함수
   function getPostion() {
-    navigator.geolocation.watchPosition(function (position) {
-      let lat = position.coords.latitude;
-      let lon = position.coords.longitude;
-      let marker_s;
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          let lat = position.coords.latitude;
+          let lon = position.coords.longitude;
+          let marker_s;
+          marker_s = new window.Tmapv2.Marker({
+            position: new window.Tmapv2.LatLng(lat, lon),
+            icon: 'https://i.ibb.co/M6QVmnQ/circle-blue.png',
+            iconSize: new window.Tmapv2.Size(10, 10),
+            map: map,
+            title: name,
+          });
+          console.log(lat);
+          console.log(lon);
 
-      marker_s = new window.Tmapv2.Marker({
-        position: new window.Tmapv2.LatLng(lat, lon),
-        icon: 'https://i.ibb.co/M6QVmnQ/circle-blue.png',
-        iconSize: new window.Tmapv2.Size(10, 10),
-        map: map,
-        title: name,
-      });
-    })
+          map.setCenter(new window.Tmapv2.LatLng(lat, lon));
+          map.setZoom(18);
+        },
+        function (error) {
+          console.log('Error occurred:', error);
+        },
+      );
+    }
   }
 
   //! 경로 설정 함수
@@ -253,10 +270,7 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
 
       // TData 객체의 경로요청 함수
       tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
-    });
-    navigator.geolocation.watchPosition(function (position) {
-      let lat = position.coords.latitude;
-      let lon = position.coords.longitude;
+
       var name;
 
       marker_s = new window.Tmapv2.Marker({
