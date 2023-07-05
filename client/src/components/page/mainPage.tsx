@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import MyInfo from '../common/myInfo';
 import Search from '../common/Search';
 // import Listdiv from '../services/Listdiv';
 import MainBtn from '../common/mainbtn';
-import '../style/Header.css'
+import hamburgerImage from '../images/hamburger.png';
+import MenuListPage from '../page/menuListPage';
+import '../style/Header.css';
 import '../style/OpenMenu.css';
-import hamburgerImage from '../images/hamburger.png'
-import MenuListPage from '../page/menuListPage'
 
 
 import MapPage from './mapPage';
@@ -25,9 +24,11 @@ const Mainpage = (): JSX.Element => {
     setIsOpen(!isOpen);
   };
   return (
+    // 전체 div 감싸는 컨테이너
     <div style={{ position: 'relative' }}>
       <MapPage selectedBtn={selectedBtn}/>
-      <div style={{ position: 'absolute', top: 0, left: 0 }}>
+      {/* 검색창과 햄버거 메뉴가 들어갈 헤더 컨테이너 */}
+      <div style={{ position: 'absolute', display : 'flex', justifyContent : 'space-between', alignItems : 'center',top: 0, left: 0}}>
         <Search onSearch={handleSearch} />
         <div className='hamburgerMenu' onClick={toggleMenu}>
           <img className='img' src={hamburgerImage} alt=''/>
