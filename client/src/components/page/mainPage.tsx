@@ -7,9 +7,7 @@ import '../style/Header.css'
 import '../style/OpenMenu.css';
 import hamburgerImage from '../images/hamburger.png'
 import MenuListPage from '../page/menuListPage'
-
-
-import MapPage from './mapPage';
+import Map from '../services/map';
 const Mainpage = (): JSX.Element => {
   const [selectedBtn, setSelectedBtn] = useState<string>('');
 
@@ -26,7 +24,7 @@ const Mainpage = (): JSX.Element => {
   };
   return (
     <div style={{ position: 'relative' }}>
-      <MapPage selectedBtn={selectedBtn}/>
+      <Map selectedBtn={selectedBtn}/>
       <div style={{ position: 'absolute', top: 0, left: 0 }}>
         <Search onSearch={handleSearch} />
         <div className='hamburgerMenu' onClick={toggleMenu}>

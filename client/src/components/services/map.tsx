@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Button, DefaultBtnContextData } from '../context/btnContext';
 import '../style/map.css';
 
@@ -177,9 +183,12 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
             .slice(0, 5)
             .map(
               (item: { name: any; id: any; frontLon: any; frontLat: any }) => (
-                <div 
+                <div
                   key={item.id}
-                  onClick={() => getRP(item.frontLat, item.frontLon)}
+                  onClick={() => setInterval(function() {
+                    console.log("왜안돼!");
+                    getRP(item.frontLat, item.frontLon);
+                  }, 3000)}
                 >
                   <span>{item.name}</span>
                 </div>
@@ -222,16 +231,16 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
 
         // TData 객체의 경로요청 함수
         tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
-        setInterval(function () {
-          var name;
-          marker_s = new window.Tmapv2.Marker({
-            position: new window.Tmapv2.LatLng(lat, lon),
-            icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
-            iconSize: new window.Tmapv2.Size(20, 20),
-            map: map,
-            title: name,
-          });
-        }, 3000);
+        var name;
+        marker_s = new window.Tmapv2.Marker({
+          position: new window.Tmapv2.LatLng(lat, lon),
+          icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
+          iconSize: new window.Tmapv2.Size(20, 20),
+          map: map,
+          title: name,
+        });
+        console.log(lat);
+        console.log(lon);
       });
     }
   }
@@ -245,7 +254,6 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
   useEffect(() => {
     // DefaultBtnContext의 값이 업데이트될 때 initTmap 함수 실행
     initTmap();
-
   }, [btnContextData]);
 
   function onComplete(this: {
@@ -286,9 +294,8 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
 
   return (
     <div>
-      <div id="map_div">
-      </div>
-        {dynamicDiv}
+      <div id="map_div"></div>
+      {dynamicDiv}
       {/* //? 경로안내로 버튼 */}
     </div>
   );
