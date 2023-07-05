@@ -1,5 +1,6 @@
 /*햄버거 메뉴 전체바디*/
 .menuToggle {
+  background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   margin-top: 745px;
@@ -14,15 +15,18 @@
   right: 0;
   transition: 0.5s ease;
 }
-
+.toggleContent {
+  width: 85%;
+  height: auto;
+}
 
 /*OO님 환영합니다, 알람벨 컨테이너 부분*/
-.header{
+/* .header{
   display: flex;
   flex-direction: row;
   justify-content:space-between;
   align-items: center;
-}
+} */
 
 /*알람벨 버튼*/
 .alertBtn{
@@ -108,12 +112,12 @@
 }
 
 /*고객선테,로그아웃 컨테이너*/
-.footer{
+/* .footer{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-}
+} */
 
 /*고객센터, 로그아웃 버튼*/
 .footerButton{
