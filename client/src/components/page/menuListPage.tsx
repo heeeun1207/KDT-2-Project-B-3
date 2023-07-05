@@ -1,6 +1,6 @@
 import React from "react";
-import Info from '../common/myInfo';
 import Book from '../common/myBookMark';
+import Info from '../common/myInfo';
 import alarm from '../images/notifications.png';
 import settingImage from '../images/setting.png';
 import '../style/OpenMenu.css';
@@ -28,7 +28,7 @@ import '../style/OpenMenu.css';
 
 function OpenMenuPage(): JSX.Element {
   return (
-    <div className="menuToggle">
+    <div className="menuToggle" style={{position: "absolute", right : 0,}}>
 
       <div className="header">
         <p>Jin님, 환영합니다.</p>
