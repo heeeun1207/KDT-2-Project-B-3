@@ -215,10 +215,6 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
       let lon = position.coords.longitude;
       let marker_s;
 
-      { timeout: 5000;
-        maximumAge: 6000;
-      }
-
       marker_s = new window.Tmapv2.Marker({
         position: new window.Tmapv2.LatLng(lat, lon),
         icon: 'https://i.ibb.co/M6QVmnQ/circle-blue.png',
