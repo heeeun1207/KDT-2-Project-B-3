@@ -25,7 +25,7 @@ const Mainpage = (): JSX.Element => {
   };
   return (
     // 전체 div 감싸는 컨테이너
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', width : '100%', height : '100%'}}>
       <MapPage selectedBtn={selectedBtn}/>
       {/* 검색창과 햄버거 메뉴가 들어갈 헤더 컨테이너 */}
       <div style={{ position: 'absolute', display : 'flex', justifyContent : 'space-between', alignItems : 'center',top: 0, left: 0}}>
