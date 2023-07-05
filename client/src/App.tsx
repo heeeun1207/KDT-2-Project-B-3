@@ -32,11 +32,11 @@ const App = (): JSX.Element => {
   // }, [location.pathname]);
 
   // '/edit/:value/:image/:name' 경로에서 헤더 제목을 '사용자 버튼 편집'으로 표시
-  React.useEffect(() => {
-    if (location.pathname.startsWith('/edit')) {
-      setPageTitle('사용자 버튼 편집');
-    }
-  }, [location.pathname]);
+  // React.useEffect(() => {
+  //   if (location.pathname.startsWith('/edit')) {
+  //     setPageTitle('사용자 버튼 편집');
+  //   }
+  // }, [location.pathname]);
 
   return (
     <>
