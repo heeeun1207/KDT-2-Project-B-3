@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react';
 import { Button, DefaultBtnContextData } from '../context/btnContext';
-import '../style/map.css';
 
 declare global {
   interface Window {
@@ -60,6 +59,14 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
   const [map, setMap] = useState<any>(null);
   const defaultBtnContext = useContext(DefaultBtnContext);
   const { btnContextData } = defaultBtnContext;
+
+  const positionAndInfo = (selectLat: any, selectLon: any) => {
+    // 첫 번째 함수 실행
+    getPostion();
+  
+    // 두 번째 함수 실행
+    getRP(selectLat, selectLon);
+  };
 
   //! 페이지가 로딩이 된 후 호출하는 함수입니다.
   function initTmap() {
@@ -185,10 +192,7 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
               (item: { name: any; id: any; frontLon: any; frontLat: any }) => (
                 <div
                   key={item.id}
-                  onClick={() => setInterval(function() {
-                    console.log("왜안돼!");
-                    getRP(item.frontLat, item.frontLon);
-                  }, 3000)}
+                  onClick={() => positionAndInfo(item.frontLat, item.frontLon)}
                 >
                   <span>{item.name}</span>
                 </div>
@@ -204,45 +208,63 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
     }
   }
 
+  //! 현재 위치 갱신 함수
+  function getPostion() {
+    navigator.geolocation.watchPosition(function (position) {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      let marker_s;
+
+      { timeout: 5000;
+        maximumAge: 6000;
+      }
+
+      marker_s = new window.Tmapv2.Marker({
+        position: new window.Tmapv2.LatLng(lat, lon),
+        icon: 'https://i.ibb.co/M6QVmnQ/circle-blue.png',
+        iconSize: new window.Tmapv2.Size(10, 10),
+        map: map,
+        title: name,
+      });
+    })
+  }
+
   //! 경로 설정 함수
   function getRP(selectLat: any, selectLon: any) {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
-        let s_latlng = new window.Tmapv2.LatLng(lat, lon);
-        //? 도착지 설정되면 좌표값으로 입력됨
-        let e_latlng = new window.Tmapv2.LatLng(selectLat, selectLon);
-        let marker_s;
+    navigator.geolocation.getCurrentPosition(function (position) {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      let s_latlng = new window.Tmapv2.LatLng(lat, lon);
+      //? 도착지 설정되면 좌표값으로 입력됨
+      let e_latlng = new window.Tmapv2.LatLng(selectLat, selectLon);
+      let marker_s;
+      console.log(position);
 
-        let optionObj = {
-          reqCoordType: 'WGS84GEO', //요청 좌표계 옵셥 설정입니다.
-          resCoordType: 'WGS84GEO', //응답 좌표계 옵셥 설정입니다.
-          trafficInfo: 'Y',
-        };
+      let optionObj = {
+        reqCoordType: 'WGS84GEO', //요청 좌표계 옵셥 설정입니다.
+        resCoordType: 'WGS84GEO', //응답 좌표계 옵셥 설정입니다.
+        trafficInfo: 'Y',
+      };
 
-        let params = {
-          onComplete: onComplete,
-          onError: onError,
-        };
+      let params = {
+        onComplete: onComplete,
+        onError: onError,
+      };
 
-        // TData 객체 생성
-        let tData = new window.Tmapv2.extension.TData();
+      // TData 객체 생성
+      let tData = new window.Tmapv2.extension.TData();
 
-        // TData 객체의 경로요청 함수
-        tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
-        var name;
-        marker_s = new window.Tmapv2.Marker({
-          position: new window.Tmapv2.LatLng(lat, lon),
-          icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
-          iconSize: new window.Tmapv2.Size(20, 20),
-          map: map,
-          title: name,
-        });
-        console.log(lat);
-        console.log(lon);
+      // TData 객체의 경로요청 함수
+      tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
+      var name;
+      marker_s = new window.Tmapv2.Marker({
+        position: new window.Tmapv2.LatLng(lat, lon),
+        icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
+        iconSize: new window.Tmapv2.Size(20, 20),
+        map: map,
+        title: name,
       });
-    }
+    });
   }
 
   useEffect(() => {
