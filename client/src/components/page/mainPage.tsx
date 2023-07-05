@@ -28,7 +28,7 @@ const Mainpage = (): JSX.Element => {
       {/* 검색창과 햄버거 메뉴가 들어갈 헤더 컨테이너 */}
       <div style={{width : '100%', height : '20%', position: 'absolute', display : 'flex', justifyContent : 'space-evenly', alignItems : 'center',top: 0, left: 0}}>
         <Search onSearch={handleSearch} />
-        <div className='hamburgerMenu' onClick={toggleMenu} style={{display : 'felx', alignItems:'center', justifyContent :'center'}}>
+        <div className='hamburgerMenu' onClick={toggleMenu} style={{display : 'felx', alignItems:'center', justifyContent :'center', width : '71px', height : '53px'}}>
           <img className='img' src={hamburgerImage} alt=''/>
         </div>
         {isOpen && <MenuListPage />}

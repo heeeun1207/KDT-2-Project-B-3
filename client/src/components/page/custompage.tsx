@@ -24,7 +24,7 @@ const Custompage = (): JSX.Element => {
   return (
     <div className="custompage-container">
       <Search onSearch={handleSearch} />
-      <div className="button-container">
+      <div className="button-container" style={{display : 'flex', justifyContent : 'space-evenly'}}>
         {/* 버튼 목록을 감싸는 컨테이너 */}
         <ButtonList searchTerm={searchTerm} />
       </div>
