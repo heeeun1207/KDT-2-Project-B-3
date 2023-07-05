@@ -177,15 +177,15 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
             .slice(0, 5)
             .map(
               (item: { name: any; id: any; frontLon: any; frontLat: any }) => (
-                <div 
+                <div
                   key={item.id}
                   onClick={() => getRP(item.frontLat, item.frontLon)}
                 >
-                  <span>{item.name}</span>
+                  {item.name}
                 </div>
               ),
             );
-          setDynamicDiv(<div>{dynamicDivContent}</div>);
+          setDynamicDiv(<div style={{display : 'flex', flexDirection : 'column', justifyContent : 'space-around'}}>{dynamicDivContent}</div>);
         } else {
           alert('검색결과가 없습니다.');
         }
@@ -288,7 +288,10 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
     <div>
       <div id="map_div">
       </div>
+      {/* 단축 버튼 클릭하면 생기는 div */}
+      <div>
         {dynamicDiv}
+      </div>
       {/* //? 경로안내로 버튼 */}
     </div>
   );
