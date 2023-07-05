@@ -66,8 +66,8 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
         // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
         const newMap = new window.Tmapv2.Map('map_div', {
           center: new window.Tmapv2.LatLng(lat, lon), // 지도 초기 좌표
-          width: '390px', // 지도의 넓이
-          height: '844px', // 지도의 높이
+          width: '100%', // 지도의 넓이
+          height: '100%', // 지도의 높이
           zoom: 18, // 지도의 줌레벨
         });
         setMap(newMap);
@@ -286,7 +286,7 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
   }
 
   return (
-    <div>
+    <>
       <div id="map_div">
       </div>
       {/* 단축 버튼 클릭하면 생기는 div */}
@@ -294,7 +294,7 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
         {dynamicDiv}
       </>
       {/* //? 경로안내로 버튼 */}
-    </div>
+    </>
   );
 };
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Search from '../common/Search';
-import ButtonList from '../services/ButtonList';
 import YesNoModal from '../common/YesNoModal';
+import ButtonList from '../services/ButtonList';
+import '../style/commonStyle.css';
 import '../style/custombtn.css';
-
 const Custompage = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // 모달 열림
