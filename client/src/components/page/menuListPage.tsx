@@ -8,7 +8,7 @@ import '../style/OpenMenu.css';
 function OpenMenuPage(): JSX.Element {
   return (
     <div className="menuToggle" style={{width : '70%', height : '100%',
-    display : 'flex', flexDirection : 'column', alignItems : 'center', 'justifyContent' : "space-around", position: 'fixed', right : 0}}>
+    display : 'flex', flexDirection : 'column', alignItems : 'center', 'justifyContent' : "space-around", position: 'fixed', right : 0, top:0}}>
 
       <div className="toggleContent">
         <p>Jin님, 환영합니다.</p>

@@ -4,7 +4,7 @@ import '../style/OpenMenu.css';
 
 const MyInfo = (): JSX.Element => {
   return (
-    <div className='myInfo' style={{width : '80%', height : '40%'}}>
+    <div className='myInfo' style={{width : '90%', height : '40%'}}>
       <h3>내 정보</h3>
       <div><strong>최근 운행 정보</strong></div>
       <Link to="/custom" style={{textDecoration: "none", color: "black"}}>

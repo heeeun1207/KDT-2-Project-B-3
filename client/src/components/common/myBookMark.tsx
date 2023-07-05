@@ -5,10 +5,10 @@ import '../style/OpenMenu.css';
 
 const myBookMark = ():JSX.Element =>{
   return (
-    <div className="myBookMark" style={{width : '80%'}}>
+    <div className="myBookMark" style={{width : '90%'}}>
 
     <div className="btnContainer">
-      <strong>마이로그</strong>
+      <strong>운행기록</strong>
       <button className="buttonStyle"><img className="imgSize" src={labelImage}
        alt="북마크 표시" /></button>
     </div>
