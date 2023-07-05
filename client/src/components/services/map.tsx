@@ -1,6 +1,9 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect, useState
+} from 'react';
 import { Button, DefaultBtnContextData } from '../context/btnContext';
-// import '../style/map.css';
 
 declare global {
   interface Window {
@@ -54,6 +57,14 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
   const [map, setMap] = useState<any>(null);
   const defaultBtnContext = useContext(DefaultBtnContext);
   const { btnContextData } = defaultBtnContext;
+
+  const positionAndInfo = (selectLat: any, selectLon: any) => {
+    // 첫 번째 함수 실행
+    getPostion();
+  
+    // 두 번째 함수 실행
+    getRP(selectLat, selectLon);
+  };
 
   //! 페이지가 로딩이 된 후 호출하는 함수입니다.
   function initTmap() {
@@ -179,7 +190,13 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
               (item: { name: any; id: any; frontLon: any; frontLat: any }) => (
                 <div style={{display : 'flex', justifyContent : 'center',borderTop: "1px solid #424242", width : '100%', height : '20%'}}
                   key={item.id}
-                  onClick={() => getRP(item.frontLat, item.frontLon)}
+                  onClick={() => {
+                    getRP(item.frontLat, item.frontLon)
+                    setInterval(function() {
+                      console.log("하나씩");
+                      getPostion();
+                    }, 1000)
+                  }}
                 >
                   {item.name}
                 </div>
@@ -196,45 +213,73 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
     }
   }
 
-  //! 경로 설정 함수
-  function getRP(selectLat: any, selectLon: any) {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
-        let s_latlng = new window.Tmapv2.LatLng(lat, lon);
-        //? 도착지 설정되면 좌표값으로 입력됨
-        let e_latlng = new window.Tmapv2.LatLng(selectLat, selectLon);
-        let marker_s;
-
-        let optionObj = {
-          reqCoordType: 'WGS84GEO', //요청 좌표계 옵셥 설정입니다.
-          resCoordType: 'WGS84GEO', //응답 좌표계 옵셥 설정입니다.
-          trafficInfo: 'Y',
-        };
-
-        let params = {
-          onComplete: onComplete,
-          onError: onError,
-        };
-
-        // TData 객체 생성
-        let tData = new window.Tmapv2.extension.TData();
-
-        // TData 객체의 경로요청 함수
-        tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
-        setInterval(function () {
-          var name;
+  //! 현재 위치 갱신 함수
+  function getPostion() {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          let lat = position.coords.latitude;
+          let lon = position.coords.longitude;
+          let marker_s;
           marker_s = new window.Tmapv2.Marker({
             position: new window.Tmapv2.LatLng(lat, lon),
-            icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
-            iconSize: new window.Tmapv2.Size(20, 20),
+            icon: 'https://i.ibb.co/M6QVmnQ/circle-blue.png',
+            iconSize: new window.Tmapv2.Size(10, 10),
             map: map,
             title: name,
           });
-        }, 3000);
-      });
+          console.log(lat);
+          console.log(lon);
+
+          map.setCenter(new window.Tmapv2.LatLng(lat, lon));
+          map.setZoom(18);
+        },
+        function (error) {
+          console.log('Error occurred:', error);
+        },
+      );
     }
+  }
+
+  //! 경로 설정 함수
+  function getRP(selectLat: any, selectLon: any) {
+    let marker_s;
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      let s_latlng = new window.Tmapv2.LatLng(lat, lon);
+      //? 도착지 설정되면 좌표값으로 입력됨
+      let e_latlng = new window.Tmapv2.LatLng(selectLat, selectLon);
+      console.log(position);
+
+      let optionObj = {
+        reqCoordType: 'WGS84GEO', //요청 좌표계 옵셥 설정입니다.
+        resCoordType: 'WGS84GEO', //응답 좌표계 옵셥 설정입니다.
+        trafficInfo: 'Y',
+      };
+
+      let params = {
+        onComplete: onComplete,
+        onError: onError,
+      };
+
+      // TData 객체 생성
+      let tData = new window.Tmapv2.extension.TData();
+
+      // TData 객체의 경로요청 함수
+      tData.getRoutePlanJson(s_latlng, e_latlng, optionObj, params);
+
+      var name;
+
+      marker_s = new window.Tmapv2.Marker({
+        position: new window.Tmapv2.LatLng(lat, lon),
+        icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
+        iconSize: new window.Tmapv2.Size(20, 20),
+        map: map,
+        title: name,
+      });
+    });
   }
 
   useEffect(() => {
@@ -246,7 +291,6 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
   useEffect(() => {
     // DefaultBtnContext의 값이 업데이트될 때 initTmap 함수 실행
     initTmap();
-
   }, [btnContextData]);
 
   function onComplete(this: {
@@ -286,15 +330,12 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
   }
 
   return (
-    <>
+    <div>
       <div id="map_div">
       </div>
-      {/* 단축 버튼 클릭하면 생기는 div */}
-      <>
         {dynamicDiv}
-      </>
       {/* //? 경로안내로 버튼 */}
-    </>
+    </div>
   );
 };
 
