@@ -23,6 +23,11 @@ const clientConfig = {
       }
     ],
   },
+  devServer: {
+    historyApiFallback: true,
+    port: 8085,
+    hot: true,
+  },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
