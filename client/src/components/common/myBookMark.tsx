@@ -1,11 +1,11 @@
 import React from "react";
-import labelImage from '../images/bookmark.png'
-import starImage from '../images/star.png'
+import labelImage from '../images/bookmark.png';
+import starImage from '../images/star.png';
 import '../style/OpenMenu.css';
 
 const myBookMark = ():JSX.Element =>{
   return (
-    <div className="myBookMark">
+    <div className="myBookMark" style={{width : '80%'}}>
 
     <div className="btnContainer">
       <strong>마이로그</strong>
