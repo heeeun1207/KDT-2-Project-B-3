@@ -330,12 +330,12 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
   }
 
   return (
-    <div>
+    <>
       <div id="map_div">
       </div>
         {dynamicDiv}
       {/* //? 경로안내로 버튼 */}
-    </div>
+    </>
   );
 };
 
