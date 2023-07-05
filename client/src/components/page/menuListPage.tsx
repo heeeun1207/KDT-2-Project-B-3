@@ -5,34 +5,14 @@ import alarm from '../images/notifications.png';
 import settingImage from '../images/setting.png';
 import '../style/OpenMenu.css';
 
-
-////////////////////////////////////
-// const SideBarWrap = styled.div`
-//   z-index: 5;
-//   padding: 12px;
-//   border-radius: 15px 0 0 15px;
-//   background-color: #e7e4e1;
-//   height: 100%;
-//   width: 55%;
-//   right: -55%;
-//   top: 0;
-//   position: fixed;
-//   transition: 0.5s ease;
-//   &.open {
-//     right: 0;
-//     transition: 0.5s ease;
-//   }
-// `;
-////////////////////////////////////
-
-
 function OpenMenuPage(): JSX.Element {
   return (
-    <div className="menuToggle" style={{position: "absolute", right : 0,}}>
+    <div className="menuToggle" style={{width : '70%', height : '100%',
+    display : 'flex', flexDirection : 'column', 'justifyContent' : "space-around", position: 'fixed', right : 0}}>
 
       <div className="header">
         <p>Jin님, 환영합니다.</p>
-         <button className="settingButton"><img className="imgSize" src={alarm} alt="" /></button>
+        <button className="settingButton"><img className="imgSize" src={alarm} alt="" /></button>
       </div>
 
       <Info />
