@@ -208,7 +208,7 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
           alert('검색결과가 없습니다.');
         }
         map.setCenter(new window.Tmapv2.LatLng(lat, lon));
-        map.setZoom(15);
+        map.setZoom(17);
       });
     }
   }
@@ -237,6 +237,9 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
         function (error) {
           console.log('Error occurred:', error);
         },
+        {
+          enableHighAccuracy: true,
+        }
       );
     }
   }
