@@ -43,9 +43,8 @@
 // export default Search;
 
 import React, { useState } from 'react';
-import Listdiv from '../services/Listdiv';
+import searchImage from '../images/Search.png';
 import '../style/Header.css';
-import searchImage from '../images/Search.png'
 
 interface SearchProps {
   onSearch: (searchTerm: string) => void;
@@ -76,10 +75,7 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
         />
         <div className='searchButton' onClick={handleSearch}><img src={searchImage} alt=''/></div>
         </div>
-        {/* <div className='hamburgerMenu'></div> */}
-        {/* {showList.length > 0 && <Listdiv />} */}
       </div>
-          {/* {showList.length > 0 && <Listdiv />} */}
     </div>
   );
 };

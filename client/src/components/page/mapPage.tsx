@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Button, DefaultBtnContextData } from '../context/btnContext';
-import '../style/map.css';
+// import '../style/map.css';
 
 declare global {
   interface Window {
@@ -66,8 +66,8 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
         // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
         const newMap = new window.Tmapv2.Map('map_div', {
           center: new window.Tmapv2.LatLng(lat, lon), // 지도 초기 좌표
-          width: '390px', // 지도의 넓이
-          height: '844px', // 지도의 높이
+          width: '100%', // 지도의 넓이
+          height: '100%', // 지도의 높이
           zoom: 18, // 지도의 줌레벨
         });
         setMap(newMap);
@@ -177,15 +177,16 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
             .slice(0, 5)
             .map(
               (item: { name: any; id: any; frontLon: any; frontLat: any }) => (
-                <div 
+                <div style={{display : 'flex', justifyContent : 'center',borderTop: "1px solid #424242", width : '100%', height : '20%'}}
                   key={item.id}
                   onClick={() => getRP(item.frontLat, item.frontLon)}
                 >
-                  <span>{item.name}</span>
+                  {item.name}
                 </div>
               ),
             );
-          setDynamicDiv(<div>{dynamicDivContent}</div>);
+          setDynamicDiv(<div style={{width : '100%', height : '40%',display : 'flex', flexDirection : 'column', justifyContent : 'space-around', alignItems : 'center',position: 'absolute', bottom: 0, overflow: "scroll", backgroundColor : 'white',
+          left: 0, right : 0}}>{dynamicDivContent}</div>);
         } else {
           alert('검색결과가 없습니다.');
         }
@@ -285,12 +286,15 @@ const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
   }
 
   return (
-    <div>
+    <>
       <div id="map_div">
       </div>
+      {/* 단축 버튼 클릭하면 생기는 div */}
+      <>
         {dynamicDiv}
+      </>
       {/* //? 경로안내로 버튼 */}
-    </div>
+    </>
   );
 };
 
