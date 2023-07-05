@@ -23,6 +23,9 @@ const clientConfig = {
       }
     ],
   },
+   performance: {
+    hints: false,
+  },
   devServer: {
     historyApiFallback: true,
     port: 8085,
