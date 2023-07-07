@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/test/index.ts",
     "build": "npx webpack",
-    "dev": "webpack-dev-server --hot"
+    "dev": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",

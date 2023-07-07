@@ -23,13 +23,13 @@ const clientConfig = {
       }
     ],
   },
-   performance: {
+  performance: {
     hints: false,
   },
   devServer: {
-    historyApiFallback: true,
-    port: 8085,
-    hot: true,
+    static: path.join(__dirname, 'public'),
+    compress: true,
+    port: 9000,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -37,6 +37,7 @@ const clientConfig = {
   output: {
     filename: 'client.bundle.js',
     path: path.resolve(__dirname, 'public'),
+    clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
