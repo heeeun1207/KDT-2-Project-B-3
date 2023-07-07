@@ -30,6 +30,9 @@ const clientConfig = {
     static: path.join(__dirname, 'public'),
     compress: true,
     port: 9000,
+    proxy: {
+      '/api': 'http://localhost:3030',
+    }
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
