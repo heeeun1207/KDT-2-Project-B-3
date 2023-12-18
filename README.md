@@ -1,73 +1,58 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 스무디
+## 프로젝트 주제
+  * 운전중에 경로 탐색은 어렵고 불편합니다.
+  * 선택한 시설 중 가까운 곳을 우선으로 빠르게 안내하는 서비스를 기획했습니다.
+---
+## 핵심 기능 - 빠른 길 찾기
+* 기본 버튼(3개)
+  * 주유소
+  * 편의점
+  * 화장실
+* 선택한 장소를 가까운 경로순으로 목록을 띄웁니다.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+* 사용자가 커스텀 가능하게 할 예정입니다.
+---
+## 진행 한 작업
+* 23.06.26
+  1. 뷰 페이지 제작
+  2. 프로젝트 폴더링
+* 23.06.27
+  1. 뷰 페이지 제작
+  2. 프로젝트 폴더링(적용 완료)
+* 23.06.28
+  1. 뷰 페이지 제작
+  2. T-map API를 활용해 자신의 현재 위치를 맵으로 나타내기(완료)
+  3. 리액트 라우터를 활용해 경로에 따라 페이지 컴포넌트를 바꿈(완료)
+  4. PWA로 배포
+* 23.06.29
+  1. 와이어프레임을 바탕으로 뷰 페이지 제작(완료)
+  2. T-map API를 활용해 출발지, 도착지의 경로를 그려내는 로직
+* 23.06.30
+  1. Context로 버튼 데이터 제공
+  2. custom페이지에서 요소 선택후 데이터를 가지고, 변경 내용 적용 페이지로 이동
+    - url 쿼리 파라미터로 가져감
+  3. '예', '아니오' 선택하는 모달 생성
+* 23.07.02
+  1. custom 페이지에서 선택한 데이터 세개 모두 가지고 이동
+    - name, image, vlaue 데이터 가지고 이동
+* 23.07.03
+  1. 단축 버튼 편집 페이지 기능 구현
+    - 선택한 버튼 데이터를 전역관리 가능하게 구현
+    - context API 컴포넌트가 데이터 업데이트 함수 제공
+* 23.07.04
+  1. T-map API를 활용해 출발지, 도착지의 경로를 그려내는 로직
+* 23.07.05
+  2. 와이어프레임을 바탕으로 뷰 페이지 제작 -> 추가 작업 필요한 부분 마지막 마무리
+  3. 발표 PPT 구성 및 스크립트 작업 진행
+---
+### 진행중인 작업
 ```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+  1. 프로젝트 종료 - 개인적으로 빠진 인원 제외, 프로젝트 마무리
+    - 프로젝트 마무리 : 기획했던 기능은 모두 구현했기에 버그 수정 + 리팩토링을 목표로 작업 진행
+  2. PPT : 발표에 사용했던 PPT를 포토폴리오로 사용할 수 있도록 수정
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+### 진행이 필요한 작업
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+  1. PWA로 배포
+  
+```
